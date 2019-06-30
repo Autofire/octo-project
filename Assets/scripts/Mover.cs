@@ -6,15 +6,16 @@ public class Mover : MonoBehaviour
 {
 	public Vector3 speed;
 	public Vector3 loopStartPosition;
-	public float loopWhenYLessThan;
+	public float loopWhenXMagExceeds;
+	public float loopWhenYMagExceeds;
 
     // Update is called once per frame
     void Update()
     {
-		if(transform.position.y < loopWhenYLessThan) {
+		if(Mathf.Abs(transform.position.y) > loopWhenYMagExceeds || Mathf.Abs(transform.position.x) > loopWhenXMagExceeds) {
 			transform.position = loopStartPosition;
 		}
 
-		transform.position -= speed * Time.deltaTime;
+		transform.position += speed * Time.deltaTime;
     }
 }
