@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 1632458853}
   - component: {fileID: 1632458855}
   - component: {fileID: 1632458854}
+  - component: {fileID: 1632458857}
   - component: {fileID: 1632458856}
   m_Layer: 0
   m_Name: Player
@@ -407,7 +408,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1632458848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1369048553618d44387dbcb3ddb444fc, type: 3}
+  m_Script: {fileID: 11500000, guid: ecc4da60ce30a9f4b87d2920ab9d16b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 0}
+  _walkSpeed: 3
+  sprite: {fileID: 1632458849}
+  anim: {fileID: 1632458851}
+  xWalkMagnitudeName: XWalk
+  yWalkMagnitudeName: YWalk
+  walkAnimName: Walk
+  idleAnimName: Idle
+--- !u!114 &1632458857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632458848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a55ce8595c57a4594a0e22a3e7c167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hAxisName: Horizontal
+  vAxisName: Vertical

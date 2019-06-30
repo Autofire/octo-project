@@ -26,6 +26,10 @@ namespace Characters.Bodies.Interfaces {
 		/// 
 		/// If the magnitude of the movement vector is equal to or greater than one,
 		/// then the character moves at their max speed.
+		///
+		/// This should be called every update frame. If no direction is desired,
+		/// Vector2.zero should be passed in. If it does not get called this way,
+		/// then the behaviour is undefined and depends on the implementation.
 		/// </summary>
 		/// <param name="direction">Direction to walk in.</param>
 		void Walk(Vector2 direction);
