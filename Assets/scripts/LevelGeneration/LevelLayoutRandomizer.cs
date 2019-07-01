@@ -6,11 +6,13 @@ namespace Level {
 	[ExecuteInEditMode]
 	public class LevelLayoutRandomizer : MonoBehaviour {
 
+		[Header("Randomization settings")]
 		[Range(1, 10)] public int seedCount = 1;
 		[Range(1, 10)] public int minBranchLength = 2;
 		[Range(1, 10)] public int maxBranchLength = 6;
 		[Range(1,  4)] public int minSeedBranches = 2;
 		[Range(1,  4)] public int maxSeedBranches = 4;
+
 
 		public LevelLayout Layout {
 			get; private set;
