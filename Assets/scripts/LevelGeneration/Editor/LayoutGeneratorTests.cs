@@ -30,7 +30,7 @@ public class LayoutGeneratorTests {
 		}
 
 		Assert.IsTrue(
-			expected.SequenceEqual(Layout.GetAdjacentCoordinates(center))
+			expected.SequenceEqual(LevelLayout.GetAdjacentCoordinates(center))
 		);
 	}
 
@@ -43,12 +43,12 @@ public class LayoutGeneratorTests {
 		Vector2Int loc1 = new Vector2Int(x1, y1);
 		Vector2Int loc2 = new Vector2Int(x2, y2);
 
-		Assert.AreEqual(Layout.AreAdjacent(loc1, loc2), expected);
+		Assert.AreEqual(LevelLayout.AreAdjacent(loc1, loc2), expected);
 	}
 
 	[Test]
 	public void TestCount() {
-		Layout layout = new Layout();
+		LevelLayout layout = new LevelLayout();
 
 		Assert.AreEqual(layout.Count, 0);
 
@@ -65,26 +65,19 @@ public class LayoutGeneratorTests {
 	[TestCase(1, 1)]
 	[TestCase(-30, 50)]
 	public void TestAddRoom(int x, int y) {
-		Layout layout = new Layout();
+		LevelLayout layout = new LevelLayout();
 
 		Vector2Int location = new Vector2Int(x, y);
-		Room room = layout.AddRoom(location);
+		IRoom room = layout.AddRoom(location);
 
 		Assert.AreEqual(location, room.Position);
 		Assert.AreEqual(room, layout.GetRoom(location));
 
-		try {
-			layout.AddRoom(new Vector2Int(x, y));
-			Assert.Fail("Layout.AddRoom didn't throw an ArgumentException");
-		}
-		catch(ArgumentException) {
-
-		}
 	}
 
 	[Test]
 	public void TestAdjacentRooms() {
-		Layout layout = new Layout();
+		LevelLayout layout = new LevelLayout();
 
 		// Checking at !, rooms at X
 		//
@@ -99,7 +92,7 @@ public class LayoutGeneratorTests {
 		layout.AddRoom(new Vector2Int(5, 3));
 		layout.AddRoom(new Vector2Int(2, 2));
 
-		Room[] results = layout.GetAdjacent(new Vector2Int(4, 3));
+		IRoom[] results = layout.GetAdjacent(new Vector2Int(4, 3));
 
 		Assert.AreEqual(
 			results[(int) Direction.Up].Position,
@@ -132,7 +125,7 @@ public class LayoutGeneratorTests {
 			Direction dirFrom2
 	) {
 
-		Layout layout = new Layout();
+		LevelLayout layout = new LevelLayout();
 		Vector2Int loc1 = new Vector2Int(x1, y1); //Vector2Int.zero;
 		Vector2Int loc2 = new Vector2Int(x2, y2); //Vector2Int.right;
 
@@ -153,7 +146,7 @@ public class LayoutGeneratorTests {
 	[Test]
 	public void TestConnectRoomsRedundant() {
 
-		Layout layout = new Layout();
+		LevelLayout layout = new LevelLayout();
 		Vector2Int loc1 = Vector2Int.zero;
 		Vector2Int loc2 = Vector2Int.right;
 
@@ -174,7 +167,7 @@ public class LayoutGeneratorTests {
 
 	[Test]
 	public void TestConnectRoomsSeparate() {
-		Layout layout = new Layout();
+		LevelLayout layout = new LevelLayout();
 		Vector2Int loc1 = Vector2Int.zero;
 		Vector2Int loc2 = Vector2Int.one;
 
@@ -192,7 +185,7 @@ public class LayoutGeneratorTests {
 
 	[Test]
 	public void TestConnectRoomsMissingOne() {
-		Layout layout = new Layout();
+		LevelLayout layout = new LevelLayout();
 		Vector2Int loc1 = Vector2Int.zero;
 		Vector2Int loc2 = Vector2Int.right;
 
@@ -209,7 +202,7 @@ public class LayoutGeneratorTests {
 
 	[Test]
 	public void TestConnectRoomsMissingBoth() {
-		Layout layout = new Layout();
+		LevelLayout layout = new LevelLayout();
 		Vector2Int loc1 = Vector2Int.zero;
 		Vector2Int loc2 = Vector2Int.right;
 
@@ -220,5 +213,23 @@ public class LayoutGeneratorTests {
 		catch(ArgumentOutOfRangeException) {
 
 		}
+	}
+
+	[Test]
+	public void TestRoomsWithMissingNeighbors() {
+		LevelLayout layout = new LevelLayout();
+
+		layout.AddRoom(Vector2Int.zero);
+		layout.AddRoom(Vector2Int.up);
+		layout.AddRoom(Vector2Int.down);
+		layout.AddRoom(Vector2Int.left);
+		layout.AddRoom(Vector2Int.right);
+
+		Vector2Int[] result = layout.RoomsWithMissingNeighbors();
+		Assert.IsTrue(!result.Contains(Vector2Int.zero));
+		Assert.IsTrue(result.Contains(Vector2Int.up));
+		Assert.IsTrue(result.Contains(Vector2Int.down));
+		Assert.IsTrue(result.Contains(Vector2Int.left));
+		Assert.IsTrue(result.Contains(Vector2Int.right));
 	}
 }

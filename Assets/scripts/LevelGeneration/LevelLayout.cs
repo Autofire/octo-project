@@ -4,13 +4,23 @@ using System.Linq;
 using UnityEngine;
 
 namespace Level {
-	public class Layout {
-		private Dictionary<Vector2Int, Room> Rooms {
-			get;
+	public class LevelLayout {
+		private Dictionary<Vector2Int, IRoom> _rooms;
+		private IRoomFactory roomFactory;
+
+		public LevelLayout(IRoomFactory factory) {
+			roomFactory = factory;
+			_rooms = new Dictionary<Vector2Int, IRoom>();
 		}
 
-		public Layout() {
-			Rooms = new Dictionary<Vector2Int, Room>();
+		public LevelLayout() : this(new Room.Factory()) { }
+
+		public IRoom[] Rooms {
+			get { return _rooms.Values.ToArray(); }
+		}
+		
+		public Vector2Int[] Coordinates {
+			get { return _rooms.Keys.ToArray(); }
 		}
 
 		/// <summary>
@@ -18,7 +28,7 @@ namespace Level {
 		/// </summary>
 		public int Count {
 			get {
-				return Rooms.Count;
+				return _rooms.Count;
 			}
 		}
 
@@ -28,7 +38,7 @@ namespace Level {
 		/// <param name="location">Location to check.</param>
 		/// <returns>True if there is a room present.</returns>
 		public bool RoomExists(Vector2Int location) {
-			return Rooms.ContainsKey(location);
+			return _rooms.ContainsKey(location);
 		}
 
 		/// <summary>
@@ -41,8 +51,8 @@ namespace Level {
 		/// <exception cref="ArgumentOutOfRangeException">Thrown if rooms aren't adjacent or rooms are null.</exception>
 		public void ConnectRooms(Vector2Int location1, Vector2Int location2) {
 
-			Room room1 = GetRoom(location1);
-			Room room2 = GetRoom(location2);
+			IRoom room1 = GetRoom(location1);
+			IRoom room2 = GetRoom(location2);
 
 			if(room1 == null || room2 == null) {
 				throw new ArgumentOutOfRangeException("Cannot form connection between null rooms");
@@ -54,15 +64,19 @@ namespace Level {
 
 		/// <summary>
 		/// Creates a new room at the given location, assuming it isn't already taken.
+		/// If it is, the room is simply returned. (i.e. this is indempotent)
 		/// </summary>
 		/// <param name="location">The location for the new room.</param>
 		/// <returns>The new room.</returns>
-		/// <exception cref="ArgumentException">Thrown if the location is already taken.</exception>
-		public Room AddRoom(Vector2Int location) {
-			Room newRoom = new Room(location);
-			Rooms.Add(location, newRoom);
+		public IRoom AddRoom(Vector2Int location) {
+			IRoom result = GetRoom(location);
 
-			return newRoom;
+			if(result == null) {
+				result = roomFactory.MakeRoom(location); //new Room(location);
+				_rooms.Add(location, result);
+			}
+
+			return result;
 		}
 
 		/// <summary>
@@ -70,8 +84,8 @@ namespace Level {
 		/// </summary>
 		/// <param name="location">The location of the room.</param>
 		/// <returns>The room or null.</returns>
-		public Room GetRoom(Vector2Int location) {
-			return (RoomExists(location) ? Rooms[location] : null);
+		public IRoom GetRoom(Vector2Int location) {
+			return (RoomExists(location) ? _rooms[location] : null);
 		}
 
 		/// <summary>
@@ -83,15 +97,31 @@ namespace Level {
 		/// </summary>
 		/// <param name="center">The "center," from which we'll get the adjacent cells.</param>
 		/// <returns>The array of rooms.</returns>
-		public Room[] GetAdjacent(Vector2Int center) {
+		public IRoom[] GetAdjacent(Vector2Int center) {
 			Vector2Int[] adjCoords = GetAdjacentCoordinates(center);
-			Room[] result = new Room[adjCoords.Length];
+			IRoom[] result = new Room[adjCoords.Length];
 
 			for(int i = 0; i < result.Length; i++) {
 				result[i] = GetRoom(adjCoords[i]);
 			}
 
 			return result;
+		}
+
+		/// <summary>
+		/// Gets a list of rooms with null neighbors. This should always have something
+		/// unless there are no rooms at all.
+		/// </summary>
+		/// <returns>The array of rooms.</returns>
+		public Vector2Int[] RoomsWithMissingNeighbors() {
+			Stack<Vector2Int> rooms = new Stack<Vector2Int>();
+			foreach(Vector2Int coord in _rooms.Keys) {
+				if(GetAdjacent(coord).Contains(null)) {
+					rooms.Push(coord);
+				}
+			}
+
+			return rooms.ToArray();
 		}
 
 		/// <summary>
@@ -126,32 +156,14 @@ namespace Level {
 		/// <returns>The direction.</returns>
 		/// <exception cref="ArgumentOutOfRangeException">Thrown if coordinates aren't adjacent.</exception>
 		public static Direction GetDirection(Vector2Int from, Vector2Int to) {
-			return VectorToDirection(to - from);
+			return (to - from).ToDirection();
 		}
 
-		/// <summary>
-		/// Figures out the direction of a unit vector.
-		/// </summary>
-		/// <param name="unitVector">Vector to check.</param>
-		/// <returns>The direction.</returns>
-		/// <exception cref="ArgumentOutOfRangeException">Thrown if the vector passed in is not a unit vector.</exception>
-		public static Direction VectorToDirection(Vector2Int unitVector) {
-
-			if(unitVector == Vector2Int.left) {
-				return Direction.Left;
-			}
-			else if(unitVector == Vector2Int.right) {
-				return Direction.Right;
-			}
-			else if(unitVector == Vector2Int.up) {
-				return Direction.Up;
-			}
-			else if(unitVector == Vector2Int.down) {
-				return Direction.Down;
-			}
-			else {
-				throw new ArgumentOutOfRangeException("Can only convert unit vectors");
-			}
+		public override string ToString() {
+			return string.Join(
+				"\n",
+				_rooms.Values.Select(x => x.ToString()).ToArray()
+			);
 		}
 	}
 
