@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System.Linq;
 using System;
+using Level;
 
 [TestFixture]
 public class LayoutGeneratorTests {
@@ -29,13 +30,25 @@ public class LayoutGeneratorTests {
 		}
 
 		Assert.IsTrue(
-			expected.SequenceEqual(LayoutGenerator.Layout.GetAdjacentCoordinates(center))
+			expected.SequenceEqual(Layout.GetAdjacentCoordinates(center))
 		);
+	}
+
+	[TestCase(0, 0, 1, 0, true)]
+	[TestCase(-1, 0, 1, 0, false)]
+	[TestCase(1, 1, 1, 0, true)]
+	[TestCase(8, 0, 1, 0, false)]
+	[TestCase(0, 0, 0, 0, false)]
+	public void TestAdjacencyCheck(int x1, int y1, int x2, int y2, bool expected) {
+		Vector2Int loc1 = new Vector2Int(x1, y1);
+		Vector2Int loc2 = new Vector2Int(x2, y2);
+
+		Assert.AreEqual(Layout.AreAdjacent(loc1, loc2), expected);
 	}
 
 	[Test]
 	public void TestCount() {
-		LayoutGenerator.Layout layout = new LayoutGenerator.Layout();
+		Layout layout = new Layout();
 
 		Assert.AreEqual(layout.Count, 0);
 
@@ -52,25 +65,26 @@ public class LayoutGeneratorTests {
 	[TestCase(1, 1)]
 	[TestCase(-30, 50)]
 	public void TestAddRoom(int x, int y) {
-		LayoutGenerator.Layout layout = new LayoutGenerator.Layout();
+		Layout layout = new Layout();
 
 		Vector2Int location = new Vector2Int(x, y);
-		LayoutGenerator.Room room = layout.AddRoom(location);
+		Room room = layout.AddRoom(location);
 
 		Assert.AreEqual(location, room.Position);
+		Assert.AreEqual(room, layout.GetRoom(location));
 
 		try {
 			layout.AddRoom(new Vector2Int(x, y));
-			Assert.Fail("LayoutGenerator.Layout.AddRoom didn't throw an ArgumentException");
+			Assert.Fail("Layout.AddRoom didn't throw an ArgumentException");
 		}
 		catch(ArgumentException) {
-			
+
 		}
 	}
 
 	[Test]
 	public void TestAdjacentRooms() {
-		LayoutGenerator.Layout layout = new LayoutGenerator.Layout();
+		Layout layout = new Layout();
 
 		// Checking at !, rooms at X
 		//
@@ -85,25 +99,126 @@ public class LayoutGeneratorTests {
 		layout.AddRoom(new Vector2Int(5, 3));
 		layout.AddRoom(new Vector2Int(2, 2));
 
-		LayoutGenerator.Room[] results = layout.GetAdjacent(new Vector2Int(4, 3));
+		Room[] results = layout.GetAdjacent(new Vector2Int(4, 3));
 
 		Assert.AreEqual(
-			results[(int)LayoutGenerator.Direction.North].Position,
+			results[(int) Direction.Up].Position,
 			new Vector2Int(4, 4)
-		); 
+		);
 
 		Assert.AreEqual(
-			results[(int)LayoutGenerator.Direction.West].Position,
+			results[(int) Direction.Left].Position,
 			new Vector2Int(3, 3)
-		); 
+		);
 
 		Assert.AreEqual(
-			results[(int)LayoutGenerator.Direction.East].Position,
+			results[(int) Direction.Right].Position,
 			new Vector2Int(5, 3)
-		); 
+		);
 
 		Assert.IsNull(
-			results[(int)LayoutGenerator.Direction.South]
-		); 
+			results[(int) Direction.Down]
+		);
+	}
+
+	[TestCase(0,0, 1,0, Direction.Right, Direction.Left)]
+	[TestCase(1,0, 0,0, Direction.Left, Direction.Right)]
+	[TestCase(0,0, 0,1, Direction.Up, Direction.Down)]
+	[TestCase(0,1, 0,0, Direction.Down, Direction.Up)]
+	public void TestConnectRoomsValid(
+			int x1, int y1,
+			int x2, int y2,
+			Direction dirFrom1,
+			Direction dirFrom2
+	) {
+
+		Layout layout = new Layout();
+		Vector2Int loc1 = new Vector2Int(x1, y1); //Vector2Int.zero;
+		Vector2Int loc2 = new Vector2Int(x2, y2); //Vector2Int.right;
+
+		bool[] expected1 = new bool[(int) Direction.Count];
+		expected1[(int) dirFrom1] = true;
+
+		bool[] expected2 = new bool[(int) Direction.Count];
+		expected2[(int) dirFrom2] = true;
+
+		layout.AddRoom(loc1);
+		layout.AddRoom(loc2);
+		layout.ConnectRooms(loc1, loc2);
+
+		Assert.IsTrue(expected1.SequenceEqual(layout.GetRoom(loc1).Openings));
+		Assert.IsTrue(expected2.SequenceEqual(layout.GetRoom(loc2).Openings));
+	}
+
+	[Test]
+	public void TestConnectRoomsRedundant() {
+
+		Layout layout = new Layout();
+		Vector2Int loc1 = Vector2Int.zero;
+		Vector2Int loc2 = Vector2Int.right;
+
+		bool[] expected1 = new bool[4];
+		expected1[(int) Direction.Right] = true;
+
+		bool[] expected2 = new bool[4];
+		expected2[(int) Direction.Left] = true;
+
+		layout.AddRoom(loc1);
+		layout.AddRoom(loc2);
+		layout.ConnectRooms(loc1, loc2);
+		layout.ConnectRooms(loc1, loc2);
+
+		Assert.IsTrue(expected1.SequenceEqual(layout.GetRoom(loc1).Openings));
+		Assert.IsTrue(expected2.SequenceEqual(layout.GetRoom(loc2).Openings));
+	}
+
+	[Test]
+	public void TestConnectRoomsSeparate() {
+		Layout layout = new Layout();
+		Vector2Int loc1 = Vector2Int.zero;
+		Vector2Int loc2 = Vector2Int.one;
+
+		layout.AddRoom(loc1);
+		layout.AddRoom(loc2);
+
+		try {
+			layout.ConnectRooms(loc1, loc2);
+			Assert.Fail("Connecting separate rooms should have thrown an exception");
+		}
+		catch(ArgumentOutOfRangeException) {
+
+		}
+	}
+
+	[Test]
+	public void TestConnectRoomsMissingOne() {
+		Layout layout = new Layout();
+		Vector2Int loc1 = Vector2Int.zero;
+		Vector2Int loc2 = Vector2Int.right;
+
+		layout.AddRoom(loc1);
+
+		try {
+			layout.ConnectRooms(loc1, loc2);
+			Assert.Fail("Connecting a room to a null room should have thrown an exception");
+		}
+		catch(ArgumentOutOfRangeException) {
+
+		}
+	}
+
+	[Test]
+	public void TestConnectRoomsMissingBoth() {
+		Layout layout = new Layout();
+		Vector2Int loc1 = Vector2Int.zero;
+		Vector2Int loc2 = Vector2Int.right;
+
+		try {
+			layout.ConnectRooms(loc1, loc2);
+			Assert.Fail("Both null rooms should have thrown an exception");
+		}
+		catch(ArgumentOutOfRangeException) {
+
+		}
 	}
 }
