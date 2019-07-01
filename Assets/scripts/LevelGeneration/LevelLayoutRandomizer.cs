@@ -6,16 +6,11 @@ namespace Level {
 	[ExecuteInEditMode]
 	public class LevelLayoutRandomizer : MonoBehaviour {
 
-		[Range(1, 10)]
-		public int seedCount = 1;
-		[Range(1, 10)]
-		public int minBranchLength = 2;
-		[Range(1, 10)]
-		public int maxBranchLength = 6;
-		[Range(1, 4)]
-		public int minSeedBranches = 2;
-		[Range(1, 4)]
-		public int maxSeedBranches = 4;
+		[Range(1, 10)] public int seedCount = 1;
+		[Range(1, 10)] public int minBranchLength = 2;
+		[Range(1, 10)] public int maxBranchLength = 6;
+		[Range(1,  4)] public int minSeedBranches = 2;
+		[Range(1,  4)] public int maxSeedBranches = 4;
 
 		public LevelLayout Layout {
 			get; private set;
@@ -36,7 +31,7 @@ namespace Level {
 		/// Creates the layout for the random level. 
 		/// </summary>
 		public void Generate() {
-			Layout = new LevelLayout(new SpecificRoom.Factory());
+			Layout = new LevelLayout();
 
 			branchEnds = new HashSet<Vector2Int>();
 			seeds = new HashSet<Vector2Int>();
@@ -59,6 +54,24 @@ namespace Level {
 				remainingSeeds--;
 			}
 
+			// Now to make all the remaining branch ends have a special purpose.
+			// We'll include both seeds and branchEnds, since these are at the center
+			// and at the corners of the level (most of the time.)
+			List<Vector2Int> pointsOfInterest = new List<Vector2Int>(seeds.Union(branchEnds));
+
+			// First, we'll select a room for the entry and exit.
+			int randomIndex = Random.Range(0, pointsOfInterest.Count);
+			Layout.GetRoom(pointsOfInterest[randomIndex]).Purpose = RoomPurpose.Entry;
+			pointsOfInterest.RemoveAt(randomIndex);
+
+			randomIndex = Random.Range(0, pointsOfInterest.Count);
+			Layout.GetRoom(pointsOfInterest[randomIndex]).Purpose = RoomPurpose.Exit;
+			pointsOfInterest.RemoveAt(randomIndex);
+
+			// Then we'll mark the rest of the rooms of interest as being special.
+			foreach(Vector2Int point in pointsOfInterest) {
+				Layout.GetRoom(point).Purpose = RoomPurpose.Special;
+			}
 		}
 
 		/// <summary>

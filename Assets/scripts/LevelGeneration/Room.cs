@@ -7,10 +7,15 @@ namespace Level {
 	public interface IRoom {
 		bool[] Openings { get; }
 		Vector2Int Position { get; }
+		RoomPurpose Purpose { get; set; }
 	}
 
 	public interface IRoomFactory {
 		IRoom MakeRoom(Vector2Int position);
+	}
+
+	public enum RoomPurpose {
+		Normal, Entry, Exit, Special
 	}
 
 	public class Room : IRoom {
@@ -37,6 +42,16 @@ namespace Level {
 			get;
 		}
 
+		// Originally, this went in a separate inheritor of the this Room object.
+		// However, doing so meant doing all sorts of messy casts. It was
+		// more convenient to do it a like this for now.
+		//
+		// TODO If this gets reused, strip this out and come up with a better solution.
+		public RoomPurpose Purpose {
+			get; set;
+		}
+
+
 		private Room() {
 
 		}
@@ -62,6 +77,10 @@ namespace Level {
 			}
 			else {
 				result += " (" + string.Join(", ", OpeningDirections.Select(x => x.ToString()).ToArray())  + ")";
+			}
+
+			if(Purpose != RoomPurpose.Normal) {
+				result += " (" + Purpose + ")";
 			}
 
 			return result;
