@@ -8,6 +8,12 @@ namespace Level {
 		Up = 0, Down, Right, Left, Count, None
 	}
 
+	// This is meant to be used in editor, and then translated into a Direction.
+	// Outside of that, don't refer to this.
+	public enum EditorDirection : int {
+		Up = 0, Down, Right, Left
+	}
+
 	public static class DirectionMethods {
 
 		/// <summary>
@@ -67,13 +73,17 @@ namespace Level {
 
 		public static Direction Opposite(this Direction dir) {
 			switch(dir) {
-				case Direction.Up:    return Direction.Down;
-				case Direction.Down:  return Direction.Up;
+				case Direction.Up: return Direction.Down;
+				case Direction.Down: return Direction.Up;
 				case Direction.Right: return Direction.Left;
-				case Direction.Left:  return Direction.Right;
+				case Direction.Left: return Direction.Right;
 				default:
 					throw new ArgumentOutOfRangeException("Cannot convert direction to vector: " + dir);
 			}
+		}
+
+		public static Direction ToDirection(this EditorDirection eDir) {
+			return (Direction) (int) eDir;
 		}
 	} // End class
 } // End namespace

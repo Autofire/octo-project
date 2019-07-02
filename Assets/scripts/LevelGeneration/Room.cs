@@ -18,10 +18,36 @@ namespace Level {
 		Normal, Entry, Exit, Special
 	}
 
+	[System.Serializable]
 	public class Room : IRoom {
+		[SerializeField] private bool[] _openings;
+		[SerializeField] private Vector2Int _position;
+		[SerializeField] private RoomPurpose _purpose;
 
 		public bool[] Openings {
-			get;
+			get {
+				return _openings;
+			}
+		}
+
+		public Vector2Int Position {
+			get {
+				return _position;
+			}
+		}
+
+		// Originally, this went in a separate inheritor of the this Room object.
+		// However, doing so meant doing all sorts of messy casts. It was
+		// more convenient to do it a like this for now.
+		//
+		// TODO If this gets reused, strip this out and come up with a better solution.
+		public RoomPurpose Purpose {
+			get {
+				return _purpose;
+			}
+			set {
+				_purpose = value;
+			}
 		}
 
 		public Direction[] OpeningDirections {
@@ -38,27 +64,14 @@ namespace Level {
 			}
 		}
 
-		public Vector2Int Position {
-			get;
-		}
-
-		// Originally, this went in a separate inheritor of the this Room object.
-		// However, doing so meant doing all sorts of messy casts. It was
-		// more convenient to do it a like this for now.
-		//
-		// TODO If this gets reused, strip this out and come up with a better solution.
-		public RoomPurpose Purpose {
-			get; set;
-		}
-
 
 		private Room() {
 
 		}
 
 		protected Room(Vector2Int position) {
-			Position = position;
-			Openings = new bool[(int) Direction.Count];
+			_position = position;
+			_openings = new bool[(int) Direction.Count];
 		}
 
 
@@ -76,7 +89,7 @@ namespace Level {
 				result += " (no openings)";
 			}
 			else {
-				result += " (" + string.Join(", ", OpeningDirections.Select(x => x.ToString()).ToArray())  + ")";
+				result += " (" + string.Join(", ", OpeningDirections.Select(x => x.ToString()).ToArray()) + ")";
 			}
 
 			if(Purpose != RoomPurpose.Normal) {

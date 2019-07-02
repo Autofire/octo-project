@@ -5,6 +5,12 @@ using System.Linq;
 namespace Level {
 	public class LevelLayoutRandomizer : MonoBehaviour {
 
+		[System.Serializable]
+		public class RoomBucket {
+			public RoomPurpose purpose;
+			public GameObject[] rooms;
+		}
+
 		[Header("Randomization settings")]
 		[Range(1, 10)] public int seedCount = 1;
 		[Range(1, 10)] public int minBranchLength = 2;
@@ -14,7 +20,9 @@ namespace Level {
 
 		[Header("Room spawning")]
 		public Vector2 roomSize;
-		public GameObject roomPrefab;
+		//public GameObject roomPrefab;
+		public RoomBucket[] roomBuckets;
+
 
 
 		public LevelLayout Layout {
@@ -32,7 +40,18 @@ namespace Level {
 				roomWorldPos.x += roomSize.x * r.Position.x;
 				roomWorldPos.y += roomSize.y * r.Position.y;
 
-				Instantiate(roomPrefab, roomWorldPos, roomPrefab.transform.rotation, transform);
+				RoomBucket bucket = roomBuckets.FirstOrDefault((b) => b.purpose == r.Purpose);
+
+				if(bucket != null && bucket.rooms.Length > 0) {
+					GameObject roomPrefab = bucket.rooms[Random.Range(0, bucket.rooms.Length)];
+					GameObject newRoom = Instantiate(roomPrefab, roomWorldPos, roomPrefab.transform.rotation, transform) as GameObject;
+
+					RoomComponent rComp = newRoom.GetComponent<RoomComponent>();
+					rComp.room = r as Room;
+				}
+				else {
+					Debug.LogError("Missing/empty bucket for " + r.Purpose);
+				}
 			}
 		}
 
