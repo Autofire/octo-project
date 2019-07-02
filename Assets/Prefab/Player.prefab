@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc4da60ce30a9f4b87d2920ab9d16b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
+  _walkSpeed: 5
   sprite: {fileID: 5123037448362864148}
   anim: {fileID: 5123037448362864150}
   xWalkMagnitudeName: XWalk
