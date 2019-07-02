@@ -63,6 +63,8 @@ namespace Characters.Bodies {
 				}
 
 			}
+
+			rigidbody.velocity = (desiredDirection * WalkSpeed);
 		}
 
 		#region Unity events
@@ -71,9 +73,6 @@ namespace Characters.Bodies {
 			Assert.IsNotNull(rigidbody);
 		}
 
-		private void FixedUpdate() {
-			rigidbody.MovePosition(rigidbody.position + (desiredDirection * WalkSpeed * Time.fixedDeltaTime));
-		}
 		#endregion
 
 	} // End class
