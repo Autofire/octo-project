@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Level {
-	[ExecuteInEditMode]
 	public class LevelLayoutRandomizer : MonoBehaviour {
 
 		[Header("Randomization settings")]
@@ -13,6 +12,10 @@ namespace Level {
 		[Range(1,  4)] public int minSeedBranches = 2;
 		[Range(1,  4)] public int maxSeedBranches = 4;
 
+		[Header("Room spawning")]
+		public Vector2 roomSize;
+		public GameObject roomPrefab;
+
 
 		public LevelLayout Layout {
 			get; private set;
@@ -21,12 +24,16 @@ namespace Level {
 		private HashSet<Vector2Int> branchEnds;
 		private HashSet<Vector2Int> seeds;
 
-		private void OnDisable() {
+		private void Start() {
 			Generate();
 
-			Debug.Log( "Branch ends: " + string.Join( ", ", branchEnds.Select(x => x.ToString()).ToArray()) );
-			Debug.Log( "Seeds: " + string.Join( ", ", seeds.Select(x => x.ToString()).ToArray()) );
-			Debug.Log(Layout.ToString());
+			foreach(IRoom r in Layout.Rooms) {
+				Vector2 roomWorldPos = transform.position;
+				roomWorldPos.x += roomSize.x * r.Position.x;
+				roomWorldPos.y += roomSize.y * r.Position.y;
+
+				Instantiate(roomPrefab, roomWorldPos, roomPrefab.transform.rotation, transform);
+			}
 		}
 
 		/// <summary>
@@ -74,6 +81,11 @@ namespace Level {
 			foreach(Vector2Int point in pointsOfInterest) {
 				Layout.GetRoom(point).Purpose = RoomPurpose.Special;
 			}
+
+
+			Debug.Log( "Branch ends: " + string.Join( ", ", branchEnds.Select(x => x.ToString()).ToArray()) );
+			Debug.Log( "Seeds: " + string.Join( ", ", seeds.Select(x => x.ToString()).ToArray()) );
+			Debug.Log(Layout.ToString());
 		}
 
 		/// <summary>

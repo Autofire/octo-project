@@ -58,7 +58,7 @@ namespace Characters.Bodies {
 				anim.SetFloat(yWalkMagnitudeName, dir.y);
 
 				if(sprite != null) {
-					Debug.Log(dir.x);
+					//Debug.Log(dir.x);
 					sprite.flipX = (dir.x < 0);
 				}
 
