@@ -83,9 +83,16 @@ namespace Level {
 			}
 
 			// Now to make all the remaining branch ends have a special purpose.
-			// We'll include both seeds and branchEnds, since these are at the center
-			// and at the corners of the level (most of the time.)
-			List<Vector2Int> pointsOfInterest = new List<Vector2Int>(seeds.Union(branchEnds));
+			List<Vector2Int> pointsOfInterest; //new List<Vector2Int>(seeds.Union(branchEnds));
+
+			if(branchEnds.Count < 2) {
+				// Since we have less than two branchEnds (somehow?), we'll include seeds too.
+				pointsOfInterest = new List<Vector2Int>(seeds.Union(branchEnds));
+			}
+			else {
+				// We have enough branch ends, so we'll just use those.
+				pointsOfInterest = new List<Vector2Int>(branchEnds);
+			}
 
 			// First, we'll select a room for the entry and exit.
 			int randomIndex = Random.Range(0, pointsOfInterest.Count);
