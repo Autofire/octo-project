@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Script: {fileID: 11500000, guid: 03e1bb441ec0a9740bef881b077a9935, type: 3}
   m_Name: DungeonWallRule
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 21300000, guid: 2d468fb2c52a0fb4c8949a7de3ffbee8, type: 3}
@@ -36,3 +36,5 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
+  inlawTiles:
+  - {fileID: 11400000, guid: ef6cea6c95233b04db3cd4efda60ae54, type: 2}

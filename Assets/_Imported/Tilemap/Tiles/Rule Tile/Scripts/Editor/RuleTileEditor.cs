@@ -139,6 +139,20 @@ namespace UnityEditor
         {
             EditorUtility.SetDirty(target);
             SceneView.RepaintAll();
+
+            UpdateOverrideTiles();
+        }
+
+        private void UpdateOverrideTiles()
+        {
+            string[] overrideTileGuids = AssetDatabase.FindAssets("t:RuleOverrideTile");
+            foreach (string overrideTileGuid in overrideTileGuids)
+            {
+                string overrideTilePath = AssetDatabase.GUIDToAssetPath(overrideTileGuid);
+                RuleOverrideTile overrideTile = AssetDatabase.LoadAssetAtPath<RuleOverrideTile>(overrideTilePath);
+                if (overrideTile.m_Tile == target)
+                    overrideTile.Override();
+            }
         }
 
         private void OnDrawHeader(Rect rect)
@@ -148,9 +162,12 @@ namespace UnityEditor
 
         public override void OnInspectorGUI()
         {
+            EditorGUI.BeginChangeCheck();
             tile.m_DefaultSprite = EditorGUILayout.ObjectField("Default Sprite", tile.m_DefaultSprite, typeof(Sprite), false) as Sprite;
             tile.m_DefaultGameObject = EditorGUILayout.ObjectField("Default Game Object", tile.m_DefaultGameObject, typeof(GameObject), false) as GameObject;
             tile.m_DefaultColliderType = (Tile.ColliderType)EditorGUILayout.EnumPopup("Default Collider", tile.m_DefaultColliderType);
+            if (EditorGUI.EndChangeCheck())
+                EditorUtility.SetDirty(tile);
 
             serializedObject.Update();
             EditorGUI.BeginChangeCheck();
