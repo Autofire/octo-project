@@ -36,5 +36,5 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
-  inlawTiles:
+  relatives:
   - {fileID: 11400000, guid: ef6cea6c95233b04db3cd4efda60ae54, type: 2}
