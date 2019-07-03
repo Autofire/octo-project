@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [Serializable]
-[CreateAssetMenu(fileName = "NewRuleTileWithRelatives", menuName = "Tiles/Custom/Rule Tile (w/ Relatives)")]
+[CreateAssetMenu(fileName = "NewRuleTileWithRelatives", menuName = "Tiles/Custom/Rule Tile (with Relatives)")]
 public class RuleTileWithRelatives : RuleTile {
 
 	public TileBase[] relatives;

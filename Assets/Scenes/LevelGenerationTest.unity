@@ -187,6 +187,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5123037448362864150, guid: 6633399b730714e46bd7ed290214640b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f2533e5f13b4e8a49871b145d4a9ba69, type: 2}
+    - target: {fileID: 5123037448362864157, guid: 6633399b730714e46bd7ed290214640b,
+        type: 3}
+      propertyPath: xWalkMagnitudeName
+      value: FaceX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123037448362864157, guid: 6633399b730714e46bd7ed290214640b,
+        type: 3}
+      propertyPath: yWalkMagnitudeName
+      value: FaceY
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6633399b730714e46bd7ed290214640b, type: 3}
 --- !u!1 &1754559524
