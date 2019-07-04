@@ -95,24 +95,28 @@ namespace Characters.Bodies {
 						direction = Vector2.down;
 					}
 				}
-				else {
-					facingComp.Facing = direction;
-				}
 
-				Vector2 orthogonalDir = direction;
+				// Ok, this'll look a little weird, FacingHandler.Facing does some stuff to the direction.
+				// This is the shown direction, so we want to heed what it shows, not what is really
+				// being used.
+				//facingComp.Facing = direction;
+				direction = facingComp.Facing.normalized;
 
-				if(Mathf.Abs(orthogonalDir.x) < Mathf.Abs(orthogonalDir.y)) {
+				//Vector2 orthogonalDir = direction;
+
+				/*
+				if(Mathf.Abs(orthogonalDir.x) <= Mathf.Abs(orthogonalDir.y)) {
 					orthogonalDir.x = 0;
 				}
 				else {
 					orthogonalDir.y = 0;
 				}
+				*/
 
-				orthogonalDir.Normalize();
 
 				GameObject attackObj = Instantiate(
 					attackObjectPrefab,
-					transform.position + (Vector3) orthogonalDir * prefabSpawnDistance,
+					transform.position + (Vector3) direction * prefabSpawnDistance,
 					attackObjectPrefab.transform.rotation,
 					null
 				) as GameObject;
@@ -128,7 +132,7 @@ namespace Characters.Bodies {
 					anim.Play(attackState);
 				}
 
-				rb.velocity += orthogonalDir * attackMoveSpeed;
+				rb.velocity += direction * attackMoveSpeed;
 			} // End if(!IsAttacking)
 		} // End Attack function
 	}

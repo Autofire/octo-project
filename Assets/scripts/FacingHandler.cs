@@ -24,6 +24,14 @@ public class FacingHandler : MonoBehaviour
 
 		set {
 			_facing = value;
+
+			if(Mathf.Abs(_facing.x) < Mathf.Abs(_facing.y)) {
+				_facing.x = 0;
+			}
+			else {
+				_facing.y = 0;
+			}
+
 			ApplyFacing();
 		}
 	}
