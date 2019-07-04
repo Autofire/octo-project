@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 public class FacingHandler : MonoBehaviour
 {
 #pragma warning disable CS0649
-	[SerializeField] private Vector2 _facing;
+	[SerializeField] private Vector2 _facing = Vector2.down;
 
 	[Header("Animation setup")]
 	[SerializeField] private Animator anim;

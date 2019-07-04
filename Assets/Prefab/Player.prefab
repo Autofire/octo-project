@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5123037448362864147}
   - component: {fileID: 5123037448362864156}
   - component: {fileID: 5123037448362864157}
+  - component: {fileID: 1239122871}
   - component: {fileID: 1235535543}
   m_Layer: 10
   m_Name: Player
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7364682651488144517, guid: 361c1db238078e14f95de6679aad515f,
+  m_Sprite: {fileID: 5980733909284804400, guid: 361c1db238078e14f95de6679aad515f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &5123037448362864150
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hAxisName: Horizontal
   vAxisName: Vertical
+  attackButtonName: Fire1
 --- !u!114 &5123037448362864157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +174,63 @@ MonoBehaviour:
   anim: {fileID: 5123037448362864150}
   walkAnimName: Walk
   idleAnimName: Idle
+--- !u!114 &1239122871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5123037448362864149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bbd509effd5bf449f3af37fef450c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackObjectPrefab: {fileID: 7656346742401756020, guid: 2ceb321009160334eab1bf037927a4e4,
+    type: 3}
+  prefabSpawnDistance: 1
+  _attackRange: 1.5
+  attackMoveSpeed: 1
+  anim: {fileID: 5123037448362864150}
+  attackState: Attack
+  layerIndex: 0
+  attackTag: Attack
+  onAttackAnimStart:
+    gameEvent: {fileID: 0}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5123037448362864157}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  onAttackAnimEnd:
+    gameEvent: {fileID: 0}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5123037448362864157}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &1235535543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 433ad5ea79510a347b773e10059d3dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _facing: {x: 0, y: 0}
+  _facing: {x: 0, y: -1}
   anim: {fileID: 5123037448362864150}
   xField: FaceX
   yField: FaceY

@@ -30,34 +30,37 @@ namespace Characters.Bodies {
 
 		public void Walk(Vector2 direction) {
 
-			// We want to clamp this so that we don't ever exceed a total magnitude of 1.
-			if(direction.sqrMagnitude > 1f) {
-				direction = direction.normalized;
-			}
-
-			if(direction.sqrMagnitude > Mathf.Epsilon) {
-				mostRecentDirection = direction.normalized;
-			}
-
-			desiredDirection = direction;
-
-			if(anim != null) {
-				Vector2 dir = Vector2.zero;
-
-				if(desiredDirection.sqrMagnitude > Mathf.Epsilon) {
-					anim.Play(walkAnimName);
-					dir = desiredDirection;
-				}
-				else {
-					anim.Play(idleAnimName);
-					dir = mostRecentDirection;
+			if(enabled) {
+				// We want to clamp this so that we don't ever exceed a total magnitude of 1.
+				if(direction.sqrMagnitude > 1f) {
+					direction = direction.normalized;
 				}
 
-				facingComp.Facing = dir;
+				if(direction.sqrMagnitude > Mathf.Epsilon) {
+					mostRecentDirection = direction.normalized;
+				}
 
+				desiredDirection = direction;
+
+				if(anim != null) {
+					Vector2 dir = Vector2.zero;
+
+					if(desiredDirection.sqrMagnitude > Mathf.Epsilon) {
+						anim.Play(walkAnimName);
+						//dir = desiredDirection;
+						facingComp.Facing = desiredDirection;
+					}
+					else {
+						anim.Play(idleAnimName);
+						//dir = mostRecentDirection;
+					}
+
+					//facingComp.Facing = dir;
+
+				}
+
+				rigidbody.velocity = (desiredDirection * WalkSpeed);
 			}
-
-			rigidbody.velocity = (desiredDirection * WalkSpeed);
 		}
 
 		#region Unity events
@@ -69,6 +72,13 @@ namespace Characters.Bodies {
 			Assert.IsNotNull(facingComp);
 		}
 
+		private void Start() {
+			// Adding the enabled box
+		}
+
+		private void OnDisable() {
+			rigidbody.velocity = Vector2.zero;
+		}
 		#endregion
 
 	} // End class

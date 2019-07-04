@@ -43,7 +43,7 @@ namespace Characters.Bodies.Interfaces {
 		float AttackRange { get; }
 
 		/// <summary>
-		/// Attack in the current facing direction.
+		/// Attack in the previous direction.
 		/// </summary>
 		void Attack();
 
