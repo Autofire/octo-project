@@ -683,6 +683,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5123037448362864148, guid: 6633399b730714e46bd7ed290214640b,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123037448362864148, guid: 6633399b730714e46bd7ed290214640b,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123037448362864148, guid: 6633399b730714e46bd7ed290214640b,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123037448362864146, guid: 6633399b730714e46bd7ed290214640b,
+        type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6633399b730714e46bd7ed290214640b, type: 3}
 --- !u!1 &1483055295 stripped
@@ -728,7 +748,18 @@ MonoBehaviour:
     gameEvent: {fileID: 0}
     unityEvent:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: HitEffect
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   onDie:
@@ -749,6 +780,20 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+  invulnerabilityTime:
+    _useInternal: 1
+    internalValue: 1
+    variable: {fileID: 0}
+  sprite: {fileID: 1483055305}
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  hitEffectDuration: 0.1
+  invulnerableAlpha: 0.76
+--- !u!212 &1483055305 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5123037448362864148, guid: 6633399b730714e46bd7ed290214640b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1483055294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1614340266
 GameObject:
   m_ObjectHideFlags: 0

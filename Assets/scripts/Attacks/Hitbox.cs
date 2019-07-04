@@ -12,11 +12,11 @@ namespace Attacks {
 		[SerializeField] private EventObjectInvoker onConnectFriend;
 #pragma warning restore CS0649
 
-		private void OnTriggerEnter2D(Collider2D collision) {
+		private void OnTriggerStay2D(Collider2D collision) {
 
 			Hurtbox otherHurtbox = collision.GetComponent<Hurtbox>();
 
-			if(otherHurtbox != null) {
+			if(otherHurtbox != null && !otherHurtbox.IsInvulnerable) {
 
 				if(sourceTeam.IsAgainst(otherHurtbox.Team)) {
 					onConnectEnemy.Invoke();
