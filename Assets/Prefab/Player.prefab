@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5123037448362864147}
   - component: {fileID: 5123037448362864156}
   - component: {fileID: 5123037448362864157}
+  - component: {fileID: 1235535543}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &5123037448362864150
@@ -95,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 5123037448362864149}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 746eef51ca85a9240a3fc8f305e3b90b, type: 2}
+  m_Controller: {fileID: 9100000, guid: f2533e5f13b4e8a49871b145d4a9ba69, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -168,9 +169,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkSpeed: 5
-  sprite: {fileID: 5123037448362864148}
   anim: {fileID: 5123037448362864150}
-  xWalkMagnitudeName: XWalk
-  yWalkMagnitudeName: YWalk
   walkAnimName: Walk
   idleAnimName: Idle
+--- !u!114 &1235535543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5123037448362864149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433ad5ea79510a347b773e10059d3dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _facing: {x: 0, y: 0}
+  anim: {fileID: 5123037448362864150}
+  xField: FaceX
+  yField: FaceY
+  sprite: {fileID: 5123037448362864148}
+  flipOnLeft: 1
