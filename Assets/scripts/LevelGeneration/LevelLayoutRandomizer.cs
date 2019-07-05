@@ -36,10 +36,6 @@ namespace Level {
 		private HashSet<Vector2Int> branchEnds;
 		private HashSet<Vector2Int> seeds;
 
-		private void OnEnable() {
-			LoadNextLevel();
-		}
-
 		public void LoadNextLevel() {
 			StartCoroutine(NextLevelCoroutine());
 		}
