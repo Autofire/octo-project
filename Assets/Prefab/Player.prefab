@@ -264,13 +264,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximum:
-    _useInternal: 1
+    _useInternal: 0
     internalValue: 10
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 83d774a23aaff7440be49b2336c931c1, type: 2}
   _current:
-    _useInternal: 1
+    _useInternal: 0
     internalValue: 10
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: a2bb8e76d08fec5419e21f34b39f6926, type: 2}
 --- !u!114 &1483055297
 MonoBehaviour:
   m_ObjectHideFlags: 0
