@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1235535543}
   - component: {fileID: 1483055296}
   - component: {fileID: 1483055297}
+  - component: {fileID: 2832075187560583979}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7564491554212495368, guid: 361c1db238078e14f95de6679aad515f,
+  m_Sprite: {fileID: 5980733909284804400, guid: 361c1db238078e14f95de6679aad515f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -284,6 +285,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _team: {fileID: 11400000, guid: 6f66777a4d776684ba6e06135d003da5, type: 2}
+  onHeal:
+    gameEvent: {fileID: 0}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   onHit:
     gameEvent: {fileID: 0}
     unityEvent:
@@ -318,3 +326,27 @@ MonoBehaviour:
   hitColor: {r: 1, g: 0, b: 0, a: 1}
   hitEffectDuration: 0.1
   invulnerableAlpha: 0.76
+--- !u!114 &2832075187560583979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5123037448362864149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf97072297829f428b040dcbb37e718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter:
+    _useInternal: 0
+    internalValue: 0
+    variable: {fileID: 11400000, guid: a2bb8e76d08fec5419e21f34b39f6926, type: 2}
+  tickFrequency:
+    _useInternal: 1
+    internalValue: 1
+    variable: {fileID: 0}
+  changePerTick:
+    _useInternal: 1
+    internalValue: -1
+    variable: {fileID: 0}
