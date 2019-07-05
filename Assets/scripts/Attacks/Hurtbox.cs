@@ -4,14 +4,16 @@ using ReachBeyond.EventObjects;
 
 namespace Attacks {
 	[RequireComponent(typeof(LifePool))]
+	[DisallowMultipleComponent]
 	public class Hurtbox : MonoBehaviour {
 #pragma warning disable CS0649
 		[SerializeField] private TeamObject _team;
 		[SerializeField] private EventObjectInvoker onHit;
 		[SerializeField] private EventObjectInvoker onDie;
 
-		[Space(10)]
-		[SerializeField] private FloatConstReference invulnerabilityTime;
+		[Header("Merce frames")]
+		[SerializeField] private bool _mercyFramesEnabled = true;
+		[SerializeField] private FloatConstReference mercyDuration;
 
 		[Header("Effects")]
 		[SerializeField] private SpriteRenderer sprite;
@@ -24,14 +26,25 @@ namespace Attacks {
 		private LifePool pool;
 		private float timeOfLastHit = -100;
 
+		public bool MercyFramesEnabled {
+			get {
+				return _mercyFramesEnabled;
+			}
+			set {
+				_mercyFramesEnabled = value;
+			}
+		}
+
 		public bool IsInvulnerable {
 			get {
-				return (Time.time < timeOfLastHit + invulnerabilityTime.ConstValue);
+				return MercyFramesEnabled && (Time.time < timeOfLastHit + mercyDuration);
 			}
 		}
 
 		public TeamObject Team {
-			get { return _team; }
+			get {
+				return _team;
+			}
 		}
 
 
@@ -62,12 +75,13 @@ namespace Attacks {
 				}
 				else {
 					onDie.Invoke();
+					Die();
 				}
 			}
 
 		}
 
-		public void Die() {
+		private void Die() {
 			Destroy(gameObject);
 		}
 	}

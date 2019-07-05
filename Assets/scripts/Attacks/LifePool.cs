@@ -2,6 +2,7 @@
 using ReachBeyond.VariableObjects;
 
 namespace Attacks {
+	[DisallowMultipleComponent]
 	public class LifePool : MonoBehaviour {
 #pragma warning disable CS0649
 		[SerializeField] private IntConstReference maximum;
