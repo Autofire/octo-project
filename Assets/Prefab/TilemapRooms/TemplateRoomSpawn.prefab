@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5123037448362864149, guid: 6633399b730714e46bd7ed290214640b, type: 3}
-  parent: {fileID: 0}
+  parent: {fileID: 7835048009454702197}
 --- !u!1001 &9217102131963276725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9312,7 +9312,7 @@ PrefabInstance:
     - target: {fileID: 1705531766422477591, guid: 2d586bf99cd428e41a3b464ce1ee913f,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[2].Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1705531766422477591, guid: 2d586bf99cd428e41a3b464ce1ee913f,
         type: 3}
@@ -9322,7 +9322,7 @@ PrefabInstance:
     - target: {fileID: 1705531766422477591, guid: 2d586bf99cd428e41a3b464ce1ee913f,
         type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[2].Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1705531766422477591, guid: 2d586bf99cd428e41a3b464ce1ee913f,
         type: 3}

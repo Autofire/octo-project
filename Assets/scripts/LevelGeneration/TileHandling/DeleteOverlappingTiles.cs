@@ -31,7 +31,7 @@ namespace Level.Tiles {
 			if(roomComp.room.OpeningDirections.Contains(associatedDirection.ToDirection())) {
 
 				foreach(Vector3Int pos in overlay.cellBounds.allPositionsWithin) {
-					Debug.Log(pos + ": " + overlay.GetTile(pos)?.name);
+					//Debug.Log(pos + ": " + overlay.GetTile(pos)?.name);
 					//Debug.Log(pos + " -> " + overlay.CellToWorld(pos) + " -> " + deletionTarget.WorldToCell(overlay.CellToWorld(pos)));
 
 					if(overlay.GetTile(pos)?.name == tileType.name) {
