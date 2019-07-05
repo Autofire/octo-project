@@ -8,6 +8,7 @@ namespace Attacks {
 	public class Hurtbox : MonoBehaviour {
 #pragma warning disable CS0649
 		[SerializeField] private TeamObject _team;
+		[SerializeField] private EventObjectInvoker onHeal;
 		[SerializeField] private EventObjectInvoker onHit;
 		[SerializeField] private EventObjectInvoker onDie;
 
@@ -78,7 +79,16 @@ namespace Attacks {
 					Die();
 				}
 			}
+		}
 
+		public void GetHealed(int healAmount) {
+			int previousLife = pool.CurrentLife;
+
+			pool.CurrentLife += healAmount;
+
+			if(pool.CurrentLife != previousLife) {
+				onHeal.Invoke();
+			}
 		}
 
 		private void Die() {
