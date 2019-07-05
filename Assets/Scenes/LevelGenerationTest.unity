@@ -911,6 +911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1754559526}
   - component: {fileID: 1754559525}
+  - component: {fileID: 1754559527}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -953,6 +954,7 @@ MonoBehaviour:
     rooms:
     - {fileID: 7835048009454702187, guid: 8aded0067cda30a4dbefa290dfcb4333, type: 3}
     - {fileID: 7835048009454702187, guid: 33057eebb9c8d0e48b5e4fc517dd2f63, type: 3}
+  debugGeneration: 0
 --- !u!4 &1754559526
 Transform:
   m_ObjectHideFlags: 0
@@ -967,6 +969,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1754559527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754559524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fa1cb37729e314ab95edd17000d602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _triggerEvent: {fileID: 11400000, guid: d824f140725a6bb49bc6e1cd84b959b3, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1754559525}
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1766654687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,6 +1070,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ForceIntoRT
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073209247277287562, guid: 40195577c3ad2744e8540f685b3ce0f8,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1591
       objectReference: {fileID: 0}
     - target: {fileID: 2073209247277287563, guid: 40195577c3ad2744e8540f685b3ce0f8,
         type: 3}
