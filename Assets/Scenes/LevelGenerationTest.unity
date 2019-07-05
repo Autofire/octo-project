@@ -802,8 +802,9 @@ GameObject:
   - component: {fileID: 1541530178}
   - component: {fileID: 1541530183}
   - component: {fileID: 1541530180}
+  - component: {fileID: 1541530184}
   m_Layer: 0
-  m_Name: Hurtbox
+  m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -975,6 +976,25 @@ MonoBehaviour:
     _useInternal: 1
     internalValue: 5
     variable: {fileID: 0}
+--- !u!95 &1541530184
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541530177}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22146e9d08777524e8163edfebc96897, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1614340266
 GameObject:
   m_ObjectHideFlags: 0
