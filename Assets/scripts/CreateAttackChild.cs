@@ -10,7 +10,6 @@ public class CreateAttackChild : MonoBehaviour
 
     void Start()
     {
-		Debug.Log("Creating child");
 		Vector2 direction = facing.Facing;
 
 		GameObject attackObj = Instantiate(

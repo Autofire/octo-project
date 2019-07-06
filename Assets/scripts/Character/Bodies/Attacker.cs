@@ -18,6 +18,7 @@ namespace Characters.Bodies {
 		[Tooltip("This is the speed WE move when we attack")]
 		[SerializeField] private float attackMoveSpeed;
 		[SerializeField] private float attackWindupTime = 0f;
+		[SerializeField] private bool canChangeDirection = false;
 
 		[Header("Animations")]
 		[SerializeField] private Animator anim;
@@ -89,6 +90,7 @@ namespace Characters.Bodies {
 
 		public void Attack(Vector2 direction) {
 			if(!IsAttacking) {
+
 				if(direction == Vector2.zero) {
 					direction = facingComp.Facing;
 
@@ -96,6 +98,10 @@ namespace Characters.Bodies {
 						Debug.LogWarning(gameObject.name + ": Unsure which direction to attack; attacking down.");
 						direction = Vector2.down;
 					}
+				}
+
+				if(canChangeDirection) {
+					facingComp.Facing = direction;
 				}
 
 				// Ok, this'll look a little weird, FacingHandler.Facing does some stuff to the direction.

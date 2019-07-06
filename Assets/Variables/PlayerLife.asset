@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d284b935cebf2941b7803ab6949ffa8, type: 3}
   m_Name: PlayerLife
   m_EditorClassIdentifier: 
-  _defaultValue: 100
-  _value: 142
+  _defaultValue: 50
+  _value: 80

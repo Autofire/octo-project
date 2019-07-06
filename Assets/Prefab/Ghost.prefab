@@ -121,7 +121,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -180,6 +180,12 @@ MonoBehaviour:
   visionMask:
     serializedVersion: 2
     m_Bits: 5120
+  meanderSpeed: 0.5
+  pauseMinDuration: 1
+  pauseMaxDuration: 4
+  meanderMinDuration: 1
+  meanderMaxDuration: 3
+  attackCooldown: 2
 --- !u!114 &7802302282825621691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc4da60ce30a9f4b87d2920ab9d16b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 5
+  _walkSpeed: 4
   anim: {fileID: 7802302282825621680}
   walkAnimName: Walk
   idleAnimName: Idle
@@ -211,9 +217,10 @@ MonoBehaviour:
   attackObjectPrefab: {fileID: 7656346742401756020, guid: 92a42a117b495ea42b3ba8d6676190cb,
     type: 3}
   prefabSpawnDistance: 1
-  _attackRange: 1.5
+  _attackRange: 2
   attackMoveSpeed: 0
   attackWindupTime: 0.4
+  canChangeDirection: 1
   anim: {fileID: 7802302282825621680}
   attackState: AttackStart
   layerIndex: 0
