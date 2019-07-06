@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FoodChanceReduction
   m_EditorClassIdentifier: 
   _defaultValue: 1
-  _value: 0
+  _value: 1
