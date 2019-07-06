@@ -12,7 +12,7 @@ namespace Attacks {
 		[SerializeField] private EventObjectInvoker onHit;
 		[SerializeField] private EventObjectInvoker onDie;
 
-		[Header("Merce frames")]
+		[Header("Mercy frames")]
 		[SerializeField] private bool _mercyFramesEnabled = true;
 		[SerializeField] private FloatConstReference mercyDuration;
 
