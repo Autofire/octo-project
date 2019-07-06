@@ -63,6 +63,12 @@ namespace Attacks {
 
 				sprite.color = resultColor;
 			}
+
+			// Check here because our HP can drop and hit zero without getting hit
+			// HACK We should actually be listening for events instead.
+			if(pool.CurrentLife == 0) {
+				Die();
+			}
 		}
 
 
@@ -75,7 +81,6 @@ namespace Attacks {
 					onHit.Invoke();
 				}
 				else {
-					onDie.Invoke();
 					Die();
 				}
 			}
@@ -92,6 +97,7 @@ namespace Attacks {
 		}
 
 		private void Die() {
+			onDie.Invoke();
 			Destroy(gameObject);
 		}
 	}
