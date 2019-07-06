@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 using ReachBeyond.EventObjects;
+using System.Collections;
 
 namespace Characters.Bodies {
 
@@ -16,6 +17,7 @@ namespace Characters.Bodies {
 		[SerializeField] private float _attackRange;
 		[Tooltip("This is the speed WE move when we attack")]
 		[SerializeField] private float attackMoveSpeed;
+		[SerializeField] private float attackWindupTime = 0f;
 
 		[Header("Animations")]
 		[SerializeField] private Animator anim;
@@ -113,18 +115,7 @@ namespace Characters.Bodies {
 				}
 				*/
 
-
-				GameObject attackObj = Instantiate(
-					attackObjectPrefab,
-					transform.position + (Vector3) direction * prefabSpawnDistance,
-					attackObjectPrefab.transform.rotation,
-					null
-				) as GameObject;
-
-				FacingHandler attackFacingComp = attackObj.GetComponent<FacingHandler>();
-				if(attackFacingComp) {
-					attackFacingComp.Facing = direction;
-				}
+				StartCoroutine(StartAttack(direction));
 
 				// Deal with ourselves
 				if(anim != null) {
@@ -135,6 +126,27 @@ namespace Characters.Bodies {
 				rb.velocity += direction * attackMoveSpeed;
 			} // End if(!IsAttacking)
 		} // End Attack function
+
+		public IEnumerator StartAttack(Vector2 direction) {
+			if(attackWindupTime > Mathf.Epsilon) {
+				yield return new WaitForSeconds(attackWindupTime);
+			}
+
+			GameObject attackObj = Instantiate(
+				attackObjectPrefab,
+				transform.position + (Vector3) direction * prefabSpawnDistance,
+				attackObjectPrefab.transform.rotation,
+				null
+			) as GameObject;
+
+			FacingHandler[] attackFacingComps = attackObj.GetComponentsInChildren<FacingHandler>();
+			foreach(FacingHandler attackFacingComp in attackFacingComps) {
+				attackFacingComp.Facing = direction;
+			}
+
+			yield return null;
+
+		}
 	}
 
 }

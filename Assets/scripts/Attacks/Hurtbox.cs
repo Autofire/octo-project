@@ -73,7 +73,7 @@ namespace Attacks {
 
 
 		public void GetHit(int damage) {
-			if(!IsInvulnerable) {
+			if(enabled && !IsInvulnerable) {
 				pool.CurrentLife -= damage;
 				timeOfLastHit = Time.time;
 
@@ -87,12 +87,14 @@ namespace Attacks {
 		}
 
 		public void GetHealed(int healAmount) {
-			int previousLife = pool.CurrentLife;
+			if(enabled) {
+				int previousLife = pool.CurrentLife;
 
-			pool.CurrentLife += healAmount;
+				pool.CurrentLife += healAmount;
 
-			if(pool.CurrentLife != previousLife) {
-				onHeal.Invoke();
+				if(pool.CurrentLife != previousLife) {
+					onHeal.Invoke();
+				}
 			}
 		}
 

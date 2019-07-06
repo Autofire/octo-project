@@ -16,6 +16,21 @@ MonoBehaviour:
   - BiteDown
   - BiteRight
   - BiteUp
+  - AttackDown
+  - AttackRight
+  - AttackUp
+  - PostAttackUp
+  - PreAttackUp
+  - PostAttackRight
+  - PreAttackRight
+  - PostAttackDown
+  - PreAttackDown
+  - StabDown
+  - StabWaveDown
+  - StabUp
+  - StabWaveUp
+  - StabRight
+  - StabWaveRight
   _automaticImporting: 0
   _spritePixelsPerUnit: 8
   _targetObjectType: 0
