@@ -18,8 +18,8 @@ TagManager:
   - EditorOnly
   - PlayerTrigger
   - Player
-  - 
-  - 
+  - Enemy
+  - BlockEnemy
   - 
   - 
   - 

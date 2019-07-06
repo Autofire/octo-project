@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 3125489330926094353}
   - component: {fileID: 3125489331190296166}
   - component: {fileID: 3125489331190296167}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Ghost
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -193,6 +193,7 @@ MonoBehaviour:
   prefabSpawnDistance: 1
   _attackRange: 1.5
   attackMoveSpeed: 0
+  attackWindupTime: 0.4
   anim: {fileID: 7802302282825621680}
   attackState: AttackStart
   layerIndex: 0
