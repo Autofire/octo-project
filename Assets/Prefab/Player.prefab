@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1483055296}
   - component: {fileID: 1483055297}
   - component: {fileID: 2832075187560583979}
+  - component: {fileID: 4317863037012474312}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -194,6 +195,7 @@ MonoBehaviour:
   prefabSpawnDistance: 1
   _attackRange: 1.5
   attackMoveSpeed: 1
+  attackWindupTime: 0
   anim: {fileID: 5123037448362864150}
   attackState: Attack
   layerIndex: 0
@@ -350,3 +352,19 @@ MonoBehaviour:
     _useInternal: 1
     internalValue: -1
     variable: {fileID: 0}
+--- !u!114 &4317863037012474312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5123037448362864149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4589e8735d15a4f47a4d651a9e990161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variable: {fileID: 11400000, guid: b0f8df30ed44a7841beb136675c2cc18, type: 2}
+  targetValue: {fileID: 5123037448362864149}
+  uponConflict: 0
+  cleanupSignal: 0
