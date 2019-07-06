@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 using Characters.Bodies.Interfaces;
+using ReachBeyond.VariableObjects;
 
 namespace Characters.Bodies {
 
@@ -9,7 +10,7 @@ namespace Characters.Bodies {
 	public class Walker : MonoBehaviour, IWalk {
 
 #pragma warning disable CS0649
-		[SerializeField] private float _walkSpeed;
+		[SerializeField] private FloatConstReference _walkSpeed;
 
 		[Header("Animations")]
 		[SerializeField] private Animator anim;
@@ -24,7 +25,7 @@ namespace Characters.Bodies {
 
 		public float WalkSpeed {
 			get {
-				return _walkSpeed;
+				return _walkSpeed.ConstValue;
 			}
 		}
 

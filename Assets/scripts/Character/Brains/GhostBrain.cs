@@ -92,9 +92,13 @@ namespace Characters.Brains {
 			if((dirToTarget).magnitude > attackRange) {
 				walkComp.Walk(dirToTarget);
 			}
-			else if(Time.time > attackResetTime) {
-				attackComp.Attack(dirToTarget);
-				attackResetTime = attackCooldown + Time.time;
+			else {
+				walkComp.Walk(Vector2.zero);
+
+				if(Time.time > attackResetTime) {
+					attackComp.Attack(dirToTarget);
+					attackResetTime = attackCooldown + Time.time;
+				}
 			}
 		}
 

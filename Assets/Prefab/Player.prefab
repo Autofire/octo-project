@@ -174,7 +174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc4da60ce30a9f4b87d2920ab9d16b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 5
+  _walkSpeed:
+    _useInternal: 1
+    internalValue: 5
+    variable: {fileID: 0}
   anim: {fileID: 5123037448362864150}
   walkAnimName: Walk
   idleAnimName: Idle
@@ -196,6 +199,7 @@ MonoBehaviour:
   _attackRange: 1.5
   attackMoveSpeed: 1
   attackWindupTime: 0
+  canChangeDirection: 0
   anim: {fileID: 5123037448362864150}
   attackState: Attack
   layerIndex: 0

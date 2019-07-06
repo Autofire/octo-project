@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7802302282825621680}
   - component: {fileID: 7802302282825621684}
   - component: {fileID: 7802302282825621685}
-  - component: {fileID: 7802302282825621690}
   - component: {fileID: 2050918130646806398}
   - component: {fileID: 7802302282825621691}
   - component: {fileID: 3125489330930371857}
@@ -146,21 +145,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7802302282825621690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7802302282825621683}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a55ce8595c57a4594a0e22a3e7c167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hAxisName: Horizontal
-  vAxisName: Vertical
-  attackButtonName: Fire1
 --- !u!114 &2050918130646806398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc4da60ce30a9f4b87d2920ab9d16b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkSpeed: 4
+  _walkSpeed:
+    _useInternal: 0
+    internalValue: 3
+    variable: {fileID: 11400000, guid: 27b30aae653c91f4c876a5d0dd894252, type: 2}
   anim: {fileID: 7802302282825621680}
   walkAnimName: Walk
   idleAnimName: Idle
