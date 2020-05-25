@@ -157,3 +157,5 @@ MonoBehaviour:
     _useInternal: 1
     internalValue: 10
     variable: {fileID: 0}
+  destroySelfOnHit: 1
+  makeTargetEthereal: 1
