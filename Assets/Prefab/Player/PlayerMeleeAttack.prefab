@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6718723487043108563}
   - component: {fileID: 7822238481779108025}
   - component: {fileID: 3278590423156869900}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PlayerMeleeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

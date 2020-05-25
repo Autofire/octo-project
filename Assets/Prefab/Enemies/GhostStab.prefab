@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 6718723487043108563}
   - component: {fileID: 7822238481779108025}
   - component: {fileID: 3278590423156869900}
-  m_Layer: 0
-  m_Name: GhostWave
+  - component: {fileID: 1245276988812938805}
+  m_Layer: 13
+  m_Name: GhostStab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 7656346742401756020}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 00a4f602d7053204088c72449b2cf43c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 97353fb1e6d5399408461ce282b0c725, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -199,7 +200,7 @@ MonoBehaviour:
   sourceTeam: {fileID: 11400000, guid: d6594c0eb323d2041a0016d964b99e08, type: 2}
   damage:
     _useInternal: 1
-    internalValue: 5
+    internalValue: 10
     variable: {fileID: 0}
   allowRepeatHits:
     _useInternal: 1
@@ -219,3 +220,19 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+--- !u!114 &1245276988812938805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7656346742401756020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe58109c2bc2898479593a1a3c6bd6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackObjectPrefab: {fileID: 7656346742401756020, guid: 87e65d67d6fbe1747a2c4e10870ffd8d,
+    type: 3}
+  prefabSpawnDistance: 1
+  facing: {fileID: 7656346742401756024}
