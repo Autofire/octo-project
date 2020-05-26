@@ -21,7 +21,7 @@ namespace Attacks {
 			if(target != null) {
 				Hurtbox otherHurtbox = target.GetComponent<Hurtbox>();
 
-				if(otherHurtbox != null & !sourceTeam.IsAgainst(otherHurtbox.Team)) {
+				if(otherHurtbox != null && !sourceTeam.IsAgainst(otherHurtbox.Team)) {
 					otherHurtbox.GetHealed(healAmount);
 
 					if(makeTargetEthereal) {
