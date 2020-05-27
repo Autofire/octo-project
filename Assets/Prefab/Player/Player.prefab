@@ -404,7 +404,7 @@ MonoBehaviour:
         m_MethodName: set_runtimeAnimatorController
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 9100000, guid: e6d6af2e7abf0bf49bd800ba15a494b5,
+          m_ObjectArgument: {fileID: 22100000, guid: a7b43e32b8a25294ca628794ce13ec6c,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.RuntimeAnimatorController,
             UnityEngine
