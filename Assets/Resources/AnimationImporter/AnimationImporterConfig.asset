@@ -31,6 +31,8 @@ MonoBehaviour:
   - StabWaveUp
   - StabRight
   - StabWaveRight
+  - Death
+  - Corpse
   _automaticImporting: 0
   _spritePixelsPerUnit: 8
   _targetObjectType: 0
