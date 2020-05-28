@@ -11,9 +11,9 @@ namespace ReachBeyond.Music {
 	public class MusicManager : MonoBehaviour {
 
 		[System.Serializable]
-		public struct MusicChannel {
-			public TrackConstReference currentTrack;
-			public AudioSource source;
+		public class MusicChannel {
+			public TrackConstReference track;
+			public AudioSource bodySource;
 
 			[HideInInspector]
 			public AudioSource startSource;
@@ -24,17 +24,18 @@ namespace ReachBeyond.Music {
 		public bool playOnStart = true;
 		public MusicChannel[] channels;
 
-		private Track playingTrack = null;
-
 		private void Awake() {
 			foreach(MusicChannel channel in channels) {
-				Assert.IsNotNull(channel.source);
+				AudioSource bodySource = channel.bodySource;
+				Assert.IsNotNull(bodySource);
 
-				Assert.IsFalse(channel.source.gameObject == gameObject);
-				AudioSource startSource = Instantiate(channel.source, channel.source.gameObject.transform.parent) as AudioSource;
+				Assert.IsFalse(bodySource.gameObject == gameObject);
+				AudioSource startSource = Instantiate(bodySource, bodySource.gameObject.transform.parent) as AudioSource;
 
-				Debug.Log("Is start source null? " + startSource == null);
-				
+				channel.startSource = startSource;
+
+				startSource.clip = channel.track.ConstValue.TrackStart;
+				bodySource.clip = channel.track.ConstValue.TrackBody;
 			}
 
 			if(persistent) {
@@ -48,23 +49,14 @@ namespace ReachBeyond.Music {
 			}
 		}
 
-		private void Update() {
-			/*
-			if(isFading) {
-				float fadeTime = Time.time - fadeStart;
-				float newVolume = 1 - fadeTime / fadeDuration;
-
-				SetVolume(newVolume);
-			}
-			*/
-		}
-
-
+		/*
 		public void SetVolume(float volume) {
-			//loopStartSource.volume = volume;
-			//loopBodySource.volume = volume;
+			loopStartSource.volume = volume;
+			loopBodySource.volume = volume;
 		}
+		*/
 
+		/*
 		public void ApplyCurrentTrack() {
 			Stop();
 
@@ -73,6 +65,7 @@ namespace ReachBeyond.Music {
 			//loopStartSource.clip = playingTrack?.TrackStart;
 			//loopBodySource.clip = playingTrack?.TrackBody;
 		}
+		*/
 
 
 		/// <summary>
@@ -80,15 +73,22 @@ namespace ReachBeyond.Music {
 		/// It simply loads up the new clips and tells the sources to play.
 		/// </summary>
 		private void Play() {
-			//float startClipLength = (loopStartSource.clip != null ? loopStartSource.clip.length : 0f);
+			foreach(MusicChannel channel in channels) {
+				AudioSource startSource = channel.startSource;
+				AudioSource bodySource = channel.bodySource;
 
-			//loopStartSource.Play();
-			//loopBodySource.PlayDelayed(startClipLength);
+				float startClipLength = (startSource.clip != null ? startSource.clip.length : 0f);
+
+				startSource.Play();
+				bodySource.PlayDelayed(startClipLength);
+			}
 		}
 
 		private void Stop() {
-			//loopStartSource.Stop();
-			//loopBodySource.Stop();
+			foreach(MusicChannel channel in channels) {
+				channel.startSource.Stop();
+				channel.bodySource.Stop();
+			}
 		}
 
 	}

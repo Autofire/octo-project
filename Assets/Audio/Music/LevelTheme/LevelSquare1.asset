@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b46a9c98fdb6104cacbeb244d17884c, type: 3}
+  m_Name: LevelSquare1
+  m_EditorClassIdentifier: 
+  _trackStart: {fileID: 8300000, guid: ade504523d7cb504ca6f53596ba73253, type: 3}
+  _trackBody: {fileID: 8300000, guid: 3d4f5200f04528a468ad1a060ee49e8c, type: 3}
