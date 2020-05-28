@@ -36,6 +36,9 @@ namespace ReachBeyond.Music {
 
 				startSource.clip = channel.track.ConstValue.TrackStart;
 				bodySource.clip = channel.track.ConstValue.TrackBody;
+
+				startSource.loop = false;
+				bodySource.loop = true;
 			}
 
 			if(persistent) {
