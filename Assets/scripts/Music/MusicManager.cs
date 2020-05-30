@@ -10,36 +10,22 @@ namespace ReachBeyond.Music {
 	// so do NOT copy stuff out of here.
 	public class MusicManager : MonoBehaviour {
 
-		[System.Serializable]
-		public class MusicChannel {
-			public TrackConstReference track;
-			public AudioSource bodySource;
-
-			[HideInInspector]
-			public AudioSource startSource;
-		}
-
 		[Tooltip("Set true to keep make this game object stick around between scenes")]
 		public bool persistent = false;
 		public bool playOnStart = true;
-		public MusicChannel[] channels;
+		public AudioSource startSource;
+		public AudioSource bodySource;
+		public TrackConstReference track;
 
 		private void Awake() {
-			foreach(MusicChannel channel in channels) {
-				AudioSource bodySource = channel.bodySource;
-				Assert.IsNotNull(bodySource);
+			Assert.IsNotNull(startSource);
+			Assert.IsNotNull(bodySource);
 
-				Assert.IsFalse(bodySource.gameObject == gameObject);
-				AudioSource startSource = Instantiate(bodySource, bodySource.gameObject.transform.parent) as AudioSource;
+			startSource.clip = track.ConstValue.TrackStart;
+			bodySource.clip = track.ConstValue.TrackBody;
 
-				channel.startSource = startSource;
-
-				startSource.clip = channel.track.ConstValue.TrackStart;
-				bodySource.clip = channel.track.ConstValue.TrackBody;
-
-				startSource.loop = false;
-				bodySource.loop = true;
-			}
+			startSource.loop = false;
+			bodySource.loop = true;
 
 			if(persistent) {
 				DontDestroyOnLoad(gameObject);
@@ -52,12 +38,10 @@ namespace ReachBeyond.Music {
 			}
 		}
 
-		/*
 		public void SetVolume(float volume) {
-			loopStartSource.volume = volume;
-			loopBodySource.volume = volume;
+			startSource.volume = volume;
+			bodySource.volume = volume;
 		}
-		*/
 
 		/*
 		public void ApplyCurrentTrack() {
@@ -76,22 +60,15 @@ namespace ReachBeyond.Music {
 		/// It simply loads up the new clips and tells the sources to play.
 		/// </summary>
 		private void Play() {
-			foreach(MusicChannel channel in channels) {
-				AudioSource startSource = channel.startSource;
-				AudioSource bodySource = channel.bodySource;
+			float startClipLength = (startSource.clip != null ? startSource.clip.length : 0f);
 
-				float startClipLength = (startSource.clip != null ? startSource.clip.length : 0f);
-
-				startSource.Play();
-				bodySource.PlayDelayed(startClipLength);
-			}
+			startSource.Play();
+			bodySource.PlayDelayed(startClipLength);
 		}
 
 		private void Stop() {
-			foreach(MusicChannel channel in channels) {
-				channel.startSource.Stop();
-				channel.bodySource.Stop();
-			}
+			startSource.Stop();
+			bodySource.Stop();
 		}
 
 	}
