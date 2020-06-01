@@ -14,10 +14,9 @@ public class SceneLoader : MonoBehaviour
 
 	IEnumerator LoadYourAsyncScene() {
 
-		AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-
 		yield return new WaitForSecondsRealtime(minWaitTime);
 
+		AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 		while(!asyncLoad.isDone) {
 			yield return null;
 		}
