@@ -55,7 +55,7 @@ public class FacingHandler : MonoBehaviour
 	}
 
 	private void ApplyFacing() {
-		if(anim.gameObject.activeSelf) {
+		if(anim.isActiveAndEnabled) {
 			anim.SetFloat(xField, Facing.x);
 			anim.SetFloat(yField, Facing.y);
 
