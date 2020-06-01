@@ -392,10 +392,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 295023207}
         m_MethodName: Play
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: af534a5225b2d2a4590461c40ab2513b,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Playables.PlayableAsset, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -460,7 +461,7 @@ PlayableDirector:
   m_GameObject: {fileID: 295023205}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 6d487918b40b6a74cbd135f32cc1be65, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: af534a5225b2d2a4590461c40ab2513b, type: 2}
   m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -480,6 +481,8 @@ PlayableDirector:
     value: {fileID: 2101336372}
   - key: {fileID: 5412453849391381843, guid: 6d487918b40b6a74cbd135f32cc1be65, type: 2}
     value: {fileID: 2119049516}
+  - key: {fileID: -6480047235714933468, guid: 6d487918b40b6a74cbd135f32cc1be65, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 1ea702c1b18b362498282ffa2d996844: {fileID: 627909792}
