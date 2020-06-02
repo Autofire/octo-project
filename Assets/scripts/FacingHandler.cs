@@ -54,8 +54,14 @@ public class FacingHandler : MonoBehaviour
 		ApplyFacing();
 	}
 
-	private void ApplyFacing() {
-		if(anim.gameObject.activeSelf) {
+	/// <summary>
+	/// Applies the current facing, not changing this.
+	/// It gets called automatically when the facing is changed,
+	/// but if something happens that causes the renderer to
+	/// lose our current facing, we'll have to reset it.
+	/// </summary>
+	public void ApplyFacing() {
+		if(anim.isActiveAndEnabled) {
 			anim.SetFloat(xField, Facing.x);
 			anim.SetFloat(yField, Facing.y);
 
