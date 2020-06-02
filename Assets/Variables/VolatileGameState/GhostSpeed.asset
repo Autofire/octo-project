@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d284b935cebf2941b7803ab6949ffa8, type: 3}
-  m_Name: LevelNumber
+  m_Script: {fileID: 11500000, guid: 2207075ded2ef4e22bd5ea5fdf234d43, type: 3}
+  m_Name: GhostSpeed
   m_EditorClassIdentifier: 
-  _defaultValue: 0
-  _value: 0
+  _defaultValue: 3.5
+  _value: 4

@@ -41,7 +41,7 @@ namespace Level {
 		}
 
 		private IEnumerator NextLevelCoroutine() {
-			yield return DespawnLevel();
+			yield return DespawnLevelAndWait();
 			Generate();
 			SpawnLevel();
 		}
@@ -230,12 +230,17 @@ namespace Level {
 		/// <summary>
 		/// Despawns a previously spawned level.
 		/// </summary>
-		private IEnumerator DespawnLevel() {
+		private IEnumerator DespawnLevelAndWait() {
+			DespawnLevel();
+
+			yield return new WaitUntil(() => transform.childCount == 0);
+		}
+
+		public void DespawnLevel() {
 			foreach(Transform child in transform) {
 				Destroy(child.gameObject);
 			}
 
-			yield return new WaitUntil(() => transform.childCount == 0);
 		}
 
 

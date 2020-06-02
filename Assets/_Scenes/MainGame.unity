@@ -372,12 +372,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &546644907 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2073209247277287564, guid: 40195577c3ad2744e8540f685b3ce0f8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2073209246005289598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &588813363
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +384,7 @@ GameObject:
   - component: {fileID: 588813365}
   - component: {fileID: 588813366}
   - component: {fileID: 588813367}
+  - component: {fileID: 588813368}
   m_Layer: 0
   m_Name: PlayerDeathResponder
   m_TagString: Untagged
@@ -427,6 +422,17 @@ MonoBehaviour:
   _response:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 588813367}
+        m_MethodName: SetColor
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 588813366}
         m_MethodName: StartPause
         m_Mode: 1
@@ -434,17 +440,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1024
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 546644907}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -478,6 +473,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 588813367}
+        m_MethodName: SetColor
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1754559528}
+        m_MethodName: DespawnLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 588813368}
+        m_MethodName: StartLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &588813367
@@ -497,6 +525,20 @@ MonoBehaviour:
   - {r: 0.75686276, g: 0, b: 0.050980393, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
   cam: {fileID: 1272366627}
+--- !u!114 &588813368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588813363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c51387d26ed4474491c522fe5399bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: TitleScreen
+  minWaitTime: 3
 --- !u!1 &736718269
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,6 +1038,18 @@ MonoBehaviour:
     _useInternal: 1
     internalValue: 1
     variable: {fileID: 0}
+--- !u!114 &1754559528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2103413035316179535, guid: cc5adb7dda4e76c4fa7dfedd57d4a4b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2103413033830581866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754559524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ba8b5522f984d43a6295daca666434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1972015885
 PrefabInstance:
   m_ObjectHideFlags: 0
