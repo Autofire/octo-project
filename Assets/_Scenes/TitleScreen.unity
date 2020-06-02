@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 295023207}
   - component: {fileID: 295023208}
   - component: {fileID: 295023209}
+  - component: {fileID: 295023210}
   m_Layer: 0
   m_Name: Director
   m_TagString: Untagged
@@ -461,7 +462,7 @@ PlayableDirector:
   m_GameObject: {fileID: 295023205}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: af534a5225b2d2a4590461c40ab2513b, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 6d487918b40b6a74cbd135f32cc1be65, type: 2}
   m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -483,18 +484,24 @@ PlayableDirector:
     value: {fileID: 2119049516}
   - key: {fileID: -6480047235714933468, guid: 6d487918b40b6a74cbd135f32cc1be65, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -6430415250370734440, guid: 57b8c28d3674ba6419636f967b735131, type: 2}
+    value: {fileID: 2119049516}
   m_ExposedReferences:
     m_References:
     - 1ea702c1b18b362498282ffa2d996844: {fileID: 627909792}
+    - a0bca8a7f6658c6499679dbb32128796: {fileID: 7781125832145487774}
     - 5a5475d61a05d004da3116123fefcf48: {fileID: 31330891}
     - f9a41803a8e1ca248949d192b3fb7076: {fileID: 7781125832145487774}
     - ddf176f1570b6404db4d0902734a72e6: {fileID: 1940296544}
+    - cba27d92ab4a81947ae5f834c3362ad0: {fileID: 7781125832145487774}
     - fac401740817d104d9ed250d76bbdf80: {fileID: 1940296544}
     - edf6bc4831fcbca49a9bd0ef0cab5142: {fileID: 7781125832145487774}
     - e39e986b020433f4e8d16dc2937718f9: {fileID: 96253091}
     - 6ab5283beef499440bb55a567f97127e: {fileID: 1940296544}
+    - 3bfe3f4783976364085da8260278b205: {fileID: 1940296544}
     - eafc6581f3da2b24fb4809775f54bfd6: {fileID: 7781125832145487774}
     - f8ecd729134b70949837d833f18379f5: {fileID: 7781125832145487775}
+    - 3bf2642b584552a48bc5b418b010260c: {fileID: 7781125832145487774}
 --- !u!114 &295023208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,6 +533,67 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &295023210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295023205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b02bca6503cce643a5c92cf68ceaae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasVisited:
+    _useInternal: 0
+    internalValue: 0
+    variable: {fileID: 11400000, guid: c9b4fe58df54dfe41965ebd1de936e75, type: 2}
+  onFirstVisit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 295023207}
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 57b8c28d3674ba6419636f967b735131,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Playables.PlayableAsset, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onSubsequentVisit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 295023207}
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: af534a5225b2d2a4590461c40ab2513b,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Playables.PlayableAsset, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 295023208}
+        m_MethodName: SkipToEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &449967529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,6 +1747,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: c9b4fe58df54dfe41965ebd1de936e75, type: 2}
+        m_MethodName: set_StoredValue
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_MethodName: 
