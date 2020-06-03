@@ -4661,7 +4661,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2103413035316179532}
   - component: {fileID: 2103413035316179535}
-  - component: {fileID: 2103413035316179533}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -4720,25 +4719,11 @@ MonoBehaviour:
     rooms:
     - {fileID: 7835048009454702187, guid: 8aded0067cda30a4dbefa290dfcb4333, type: 3}
     - {fileID: 7835048009454702187, guid: 33057eebb9c8d0e48b5e4fc517dd2f63, type: 3}
-  debugGeneration: 0
---- !u!114 &2103413035316179533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103413035316179534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83fa1cb37729e314ab95edd17000d602, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _triggerEvent: {fileID: 11400000, guid: d824f140725a6bb49bc6e1cd84b959b3, type: 2}
-  _response:
+  onLevelSpawned:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2103413035316179535}
-        m_MethodName: LoadNextLevel
+      - m_Target: {fileID: 11400000, guid: f6119c40e71232642bab8d104281987b, type: 2}
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4750,6 +4735,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  debugGeneration: 0
 --- !u!1 &2740888396589956747
 GameObject:
   m_ObjectHideFlags: 0
@@ -4987,6 +4973,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5123037448362864149, guid: 6633399b730714e46bd7ed290214640b, type: 3}
   parent: {fileID: 8181771298315828575}
+  spawnOnStart: 1
+  passFacingToSpawnedObject: 0
+  facingHandler: {fileID: 0}
 --- !u!1 &5259146156381181282
 GameObject:
   m_ObjectHideFlags: 0
@@ -5497,7 +5486,7 @@ GameObject:
   - component: {fileID: 8482859302247895817}
   - component: {fileID: 2393794795813561773}
   m_Layer: 0
-  m_Name: TemplateRoomBoss
+  m_Name: ExitRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5630,7 +5619,7 @@ GameObject:
   - component: {fileID: 8482859301836910825}
   - component: {fileID: 2393794795687675469}
   m_Layer: 0
-  m_Name: TemplateRoomSpawn
+  m_Name: SpawnRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
