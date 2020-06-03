@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using ReachBeyond.VariableObjects;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class RealtimePause : MonoBehaviour
 {
-	public float pauseDuration;
+	public FloatConstReference pauseDuration;
 	public UnityEvent onUnpause;
 
 	private float pauseEndTime = -1f;
