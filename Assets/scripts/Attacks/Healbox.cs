@@ -11,6 +11,7 @@ namespace Attacks {
 		public IntConstReference healAmount;
 		public bool destroySelfOnHit = true;
 		public bool makeTargetEthereal = false;
+		public UnityEvent onHeal;
 
 		private void OnTriggerEnter2D(Collider2D collision) {
 			Hit(collision.gameObject);
@@ -23,6 +24,8 @@ namespace Attacks {
 
 				if(otherHurtbox != null && !sourceTeam.IsAgainst(otherHurtbox.Team)) {
 					otherHurtbox.GetHealed(healAmount);
+
+					onHeal.Invoke();
 
 					if(makeTargetEthereal) {
 						EtherealStatus.Apply(target);

@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 8871944563347062678}
   - component: {fileID: 8810671779711894608}
   - component: {fileID: 9115957345531862113}
+  - component: {fileID: 3201904675357487502}
   m_Layer: 5
   m_Name: ApplesNumber
   m_TagString: Untagged
@@ -533,6 +534,24 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ABC
+--- !u!114 &3201904675357487502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4529548769503371485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e8581706a0f58478d394779cb1a5ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 9115957345531862113}
+  prefix: 
+  value:
+    _useInternal: 0
+    internalValue: 0
+    variable: {fileID: 11400000, guid: dc6c205be5e6ffd46bec1bee9caa2aa3, type: 2}
 --- !u!1 &4698909994246505439
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +721,7 @@ GameObject:
   - component: {fileID: 6144108101895184437}
   - component: {fileID: 6144108101895184439}
   - component: {fileID: 6144108101895184436}
-  - component: {fileID: 6144108101895184438}
+  - component: {fileID: 4587373113307348580}
   m_Layer: 5
   m_Name: LevelDisplay
   m_TagString: Untagged
@@ -771,7 +790,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Level: 0'
---- !u!114 &6144108101895184438
+--- !u!114 &4587373113307348580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -780,11 +799,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6144108101895184442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2765bf1ce3beb41a5dd49bae39d8d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 44e8581706a0f58478d394779cb1a5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 6144108101895184436}
-  lvlNum:
+  prefix: 'Level: '
+  value:
     _useInternal: 0
     internalValue: 0
     variable: {fileID: 11400000, guid: 09d5371af55d34b46ad0abf269efdfbb, type: 2}

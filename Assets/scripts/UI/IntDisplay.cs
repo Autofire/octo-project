@@ -2,12 +2,13 @@
 using UnityEngine.UI;
 using ReachBeyond.VariableObjects;
 
-public class LevelDisplay : MonoBehaviour
+public class IntDisplay : MonoBehaviour
 {
 	public Text text;
-	public IntConstReference lvlNum;
+	public string prefix;
+	public IntConstReference value;
 
 	private void OnGUI() {
-		text.text = "Level: " + lvlNum;
+		text.text = prefix + value;
 	}
 }
