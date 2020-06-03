@@ -46,6 +46,8 @@ MonoBehaviour:
   prefab: {fileID: 7446969295708167319, guid: 66771ab1b2ceb2f4ebf9198ac9157de5, type: 3}
   parent: {fileID: 0}
   spawnOnStart: 0
+  passFacingToSpawnedObject: 0
+  facingHandler: {fileID: 0}
 --- !u!1 &7802302282825621683
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +367,17 @@ MonoBehaviour:
     unityEvent:
       m_PersistentCalls:
         m_Calls:
+        - m_Target: {fileID: 11400000, guid: 3fcc6074f505d354383f72699aabdbbe, type: 2}
+          m_MethodName: Raise
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
         - m_Target: {fileID: 1931496120851746420}
           m_MethodName: Spawn
           m_Mode: 1
