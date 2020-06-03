@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using UnityEngine.Events;
 
 namespace Level {
 	public class LevelLayoutRandomizer : MonoBehaviour {
@@ -24,6 +25,9 @@ namespace Level {
 		//public GameObject roomPrefab;
 		public RoomBucket[] roomBuckets;
 
+		[Header("Events")]
+		public UnityEvent onLevelSpawned;
+
 		[Header("Debug")]
 		public bool debugGeneration = false;
 
@@ -44,6 +48,8 @@ namespace Level {
 			yield return DespawnLevelAndWait();
 			Generate();
 			SpawnLevel();
+
+			onLevelSpawned.Invoke();
 		}
 
 		/// <summary>

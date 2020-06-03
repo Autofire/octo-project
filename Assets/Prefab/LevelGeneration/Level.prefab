@@ -4719,6 +4719,22 @@ MonoBehaviour:
     rooms:
     - {fileID: 7835048009454702187, guid: 8aded0067cda30a4dbefa290dfcb4333, type: 3}
     - {fileID: 7835048009454702187, guid: 33057eebb9c8d0e48b5e4fc517dd2f63, type: 3}
+  onLevelSpawned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f6119c40e71232642bab8d104281987b, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   debugGeneration: 0
 --- !u!1 &2740888396589956747
 GameObject:

@@ -563,6 +563,7 @@ GameObject:
   - component: {fileID: 8068343445674310742}
   - component: {fileID: 876139315705958938}
   - component: {fileID: 7325038966792090319}
+  - component: {fileID: 5511048666003272145}
   m_Layer: 5
   m_Name: TimeNumber
   m_TagString: Untagged
@@ -631,6 +632,23 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ??:??
+--- !u!114 &5511048666003272145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5047682127385980402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fbf0f1e5cf856479a3e4162cd6886e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 7325038966792090319}
+  time:
+    _useInternal: 0
+    internalValue: 0
+    variable: {fileID: 11400000, guid: 0a4069d301c4be64883bad430694013d, type: 2}
 --- !u!1 &5217076884399011031
 GameObject:
   m_ObjectHideFlags: 0
