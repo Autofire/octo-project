@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1907015849422297919}
   - component: {fileID: 7293759520557083883}
   - component: {fileID: 6203441761217529934}
+  - component: {fileID: 776945129796214984}
   m_Layer: 11
   m_Name: GhostDying
   m_TagString: Player
@@ -201,6 +202,8 @@ MonoBehaviour:
   prefab: {fileID: 808290808102093725, guid: 3fe3e022d4924cf4c9db8c99c827d8cf, type: 3}
   parent: {fileID: 0}
   spawnOnStart: 0
+  passFacingToSpawnedObject: 0
+  facingHandler: {fileID: 0}
 --- !u!114 &7293759520557083883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,3 +236,22 @@ MonoBehaviour:
     internalValue: {fileID: 0}
     variable: {fileID: 11400000, guid: b0f8df30ed44a7841beb136675c2cc18, type: 2}
   force: -3
+--- !u!114 &776945129796214984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446969295708167319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a410dfd3c71234c939f8e05000e7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source:
+    _useInternal: 0
+    internalValue: {fileID: 0}
+    variable: {fileID: 11400000, guid: 5fdbf79c0c5fde24ea02add43f29f3dc, type: 2}
+  clip: {fileID: 8300000, guid: fac20bc66b32f1840bb94203aeb2b2e8, type: 3}
+  volume: 1
+  playOnEnable: 1
