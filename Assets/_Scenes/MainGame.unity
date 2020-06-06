@@ -692,7 +692,7 @@ PrefabInstance:
     - target: {fileID: 7802302282825621683, guid: 495675e25f699c6498a511478f2326c3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7802302282825621681, guid: 495675e25f699c6498a511478f2326c3,
         type: 3}
@@ -932,6 +932,7 @@ GameObject:
   - component: {fileID: 588813366}
   - component: {fileID: 588813367}
   - component: {fileID: 588813368}
+  - component: {fileID: 588813369}
   m_Layer: 0
   m_Name: PlayerDeathResponder
   m_TagString: Untagged
@@ -1056,6 +1057,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 588813369}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &588813367
@@ -1089,6 +1101,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: TitleScreen
   minWaitTime: 3
+--- !u!114 &588813369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588813363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a410dfd3c71234c939f8e05000e7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source:
+    _useInternal: 0
+    internalValue: {fileID: 0}
+    variable: {fileID: 11400000, guid: 5fdbf79c0c5fde24ea02add43f29f3dc, type: 2}
+  clip: {fileID: 8300000, guid: 201abfc9943c2a345aa8c4793b2f7687, type: 3}
+  volume: 1
+  playOnEnable: 0
 --- !u!1 &733303692
 GameObject:
   m_ObjectHideFlags: 0

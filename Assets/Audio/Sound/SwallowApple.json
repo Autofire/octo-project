@@ -36,34 +36,71 @@
 					"notes": [
 						{
 							"pitches": [
-								48
+								45
 							],
 							"points": [
 								{
 									"tick": 0,
 									"pitchBend": 0,
-									"volume": 100
+									"volume": 33
 								},
 								{
 									"tick": 1,
-									"pitchBend": -3,
+									"pitchBend": -2,
+									"volume": 67
+								}
+							]
+						},
+						{
+							"pitches": [
+								50,
+								43
+							],
+							"points": [
+								{
+									"tick": 1,
+									"pitchBend": 0,
+									"volume": 67
+								},
+								{
+									"tick": 2,
+									"pitchBend": 5,
 									"volume": 100
 								}
 							]
 						},
 						{
 							"pitches": [
-								50
+								52,
+								57
 							],
 							"points": [
 								{
-									"tick": 1,
+									"tick": 2,
 									"pitchBend": 0,
 									"volume": 100
 								},
 								{
 									"tick": 3,
-									"pitchBend": 2,
+									"pitchBend": -2,
+									"volume": 67
+								}
+							]
+						},
+						{
+							"pitches": [
+								50,
+								55
+							],
+							"points": [
+								{
+									"tick": 3,
+									"pitchBend": 0,
+									"volume": 0
+								},
+								{
+									"tick": 4,
+									"pitchBend": 0,
 									"volume": 100
 								}
 							]
@@ -105,11 +142,11 @@
 		},
 		{
 			"type": "pitch",
-			"octaveScrollBar": 2,
+			"octaveScrollBar": 3,
 			"instruments": [
 				{
 					"type": "chip",
-					"volume": 80,
+					"volume": 100,
 					"pan": 0,
 					"effects": "none",
 					"preset": 64,
@@ -126,7 +163,25 @@
 			"patterns": [
 				{
 					"instrument": 1,
-					"notes": []
+					"notes": [
+						{
+							"pitches": [
+								57
+							],
+							"points": [
+								{
+									"tick": 0,
+									"pitchBend": 0,
+									"volume": 33
+								},
+								{
+									"tick": 1,
+									"pitchBend": -2,
+									"volume": 67
+								}
+							]
+						}
+					]
 				},
 				{
 					"instrument": 1,
@@ -167,7 +222,7 @@
 			"instruments": [
 				{
 					"type": "chip",
-					"volume": 80,
+					"volume": 100,
 					"pan": 0,
 					"effects": "none",
 					"preset": 65,
@@ -198,7 +253,7 @@
 								{
 									"tick": 1,
 									"pitchBend": -2,
-									"volume": 67
+									"volume": 0
 								}
 							]
 						},
@@ -211,47 +266,11 @@
 								{
 									"tick": 1,
 									"pitchBend": 0,
-									"volume": 67
-								},
-								{
-									"tick": 2,
-									"pitchBend": 5,
-									"volume": 100
-								}
-							]
-						},
-						{
-							"pitches": [
-								64,
-								69
-							],
-							"points": [
-								{
-									"tick": 2,
-									"pitchBend": 0,
-									"volume": 100
-								},
-								{
-									"tick": 3,
-									"pitchBend": -2,
-									"volume": 67
-								}
-							]
-						},
-						{
-							"pitches": [
-								62,
-								67
-							],
-							"points": [
-								{
-									"tick": 3,
-									"pitchBend": 0,
 									"volume": 0
 								},
 								{
-									"tick": 4,
-									"pitchBend": 0,
+									"tick": 3,
+									"pitchBend": 5,
 									"volume": 100
 								}
 							]
