@@ -22,13 +22,13 @@ AnimationClip:
     - time: 0
       value: {fileID: 6521180617882002523, guid: f4c0688a68457d64ea1334b391967157,
         type: 3}
-    - time: 0.2
+    - time: 2.4
       value: {fileID: -2429674731111913470, guid: f4c0688a68457d64ea1334b391967157,
         type: 3}
-    - time: 2.6
+    - time: 2.6000001
       value: {fileID: -584023849045350950, guid: f4c0688a68457d64ea1334b391967157,
         type: 3}
-    - time: 2.8
+    - time: 5
       value: {fileID: 910502910123473183, guid: f4c0688a68457d64ea1334b391967157,
         type: 3}
     - time: 5.183333

@@ -43,30 +43,18 @@ namespace ReachBeyond.Music {
 			bodySource.volume = volume;
 		}
 
-		/*
-		public void ApplyCurrentTrack() {
-			Stop();
-
-			//playingTrack = currentTrack;
-
-			//loopStartSource.clip = playingTrack?.TrackStart;
-			//loopBodySource.clip = playingTrack?.TrackBody;
-		}
-		*/
-
-
 		/// <summary>
 		/// This doesn't apply the current track, nor does it change the volume.
 		/// It simply loads up the new clips and tells the sources to play.
 		/// </summary>
-		private void Play() {
+		public void Play() {
 			float startClipLength = (startSource.clip != null ? startSource.clip.length : 0f);
 
 			startSource.Play();
 			bodySource.PlayDelayed(startClipLength);
 		}
 
-		private void Stop() {
+		public void Stop() {
 			startSource.Stop();
 			bodySource.Stop();
 		}

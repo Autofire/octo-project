@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3583219959993705956}
   - component: {fileID: 3583219959993705979}
   - component: {fileID: 3583219959993705978}
+  - component: {fileID: 4507832366101380185}
   m_Layer: 0
   m_Name: Food
   m_TagString: Untagged
@@ -115,6 +116,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4507832366101380185}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!61 &3583219959993705979
@@ -164,3 +176,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4507832366101380185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583219959993705977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a410dfd3c71234c939f8e05000e7c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source:
+    _useInternal: 0
+    internalValue: {fileID: 0}
+    variable: {fileID: 11400000, guid: 5fdbf79c0c5fde24ea02add43f29f3dc, type: 2}
+  clip: {fileID: 8300000, guid: d82601cefe8043941a9404b065923573, type: 3}
+  volume: 1
+  playOnEnable: 0
