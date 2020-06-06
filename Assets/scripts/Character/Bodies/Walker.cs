@@ -9,15 +9,17 @@ namespace Characters.Bodies {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class Walker : MonoBehaviour, IWalk {
 
-#pragma warning disable CS0649
-		[SerializeField] private FloatConstReference _walkSpeed;
+		public FloatConstReference _walkSpeed;
+		public float boostedWalkMultiplier = 1.5f;
 
+#pragma warning disable CS0649
 		[Header("Animations")]
 		[SerializeField] private Animator anim;
 		[SerializeField] private string walkAnimName = "Walk";
 		[SerializeField] private string idleAnimName = "Idle";
 #pragma warning restore CS0649
 
+		private float walkMultiplier = 1f;
 		private FacingHandler facingComp;
 		private Vector2 desiredDirection;
 		private Vector2 mostRecentDirection;
@@ -25,8 +27,16 @@ namespace Characters.Bodies {
 
 		public float WalkSpeed {
 			get {
-				return _walkSpeed.ConstValue;
+				return _walkSpeed.ConstValue * walkMultiplier;
 			}
+		}
+
+		public void IncreaseWalkSpeed() {
+			walkMultiplier = boostedWalkMultiplier;
+		}
+
+		public void ResetWalkSpeed() {
+			walkMultiplier = 1f;
 		}
 
 		public void Walk(Vector2 direction) {

@@ -213,7 +213,7 @@ MonoBehaviour:
     variable: {fileID: 11400000, guid: b0f8df30ed44a7841beb136675c2cc18, type: 2}
   visionMask:
     serializedVersion: 2
-    m_Bits: 5120
+    m_Bits: 21504
   meanderSpeed: 0.5
   pauseMinDuration: 1
   pauseMaxDuration: 4

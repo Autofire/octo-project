@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using ReachBeyond.VariableObjects;
 using ReachBeyond.EventObjects;
+using System;
 
 namespace Attacks {
 	[RequireComponent(typeof(LifePool))]
 	[DisallowMultipleComponent]
 	public class Hurtbox : MonoBehaviour {
+
 #pragma warning disable CS0649
 		[SerializeField] private TeamObject _team;
 		[SerializeField] private EventObjectInvoker onHeal;
@@ -26,6 +28,7 @@ namespace Attacks {
 
 		private LifePool pool;
 		private float timeOfLastHit = -100;
+		private float damageMultiplier = 1f;
 
 		public bool MercyFramesEnabled {
 			get {
@@ -71,10 +74,17 @@ namespace Attacks {
 			}
 		}
 
+		public void SetDamageMultiplier(float multiplier) {
+			damageMultiplier = multiplier;
+		}
+
+		public void ResetDamageMultiplier() {
+			damageMultiplier = 1f;
+		}
 
 		public void GetHit(int damage) {
 			if(enabled && !IsInvulnerable) {
-				pool.CurrentLife -= damage;
+				pool.CurrentLife -= Mathf.RoundToInt(damage * damageMultiplier);
 				timeOfLastHit = Time.time;
 
 				if(pool.CurrentLife > 0) {

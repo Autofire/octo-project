@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ReachBeyond.VariableObjects;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,6 +15,7 @@ public class EtherealStatus : MonoBehaviour
 	}
 
 	public float duration = 10f;
+	public IntReference remainingPercentage;
 	public UnityEvent onApply;
 	public UnityEvent onRemove;
 
@@ -42,6 +44,14 @@ public class EtherealStatus : MonoBehaviour
 		enabled = false;
 	}
 
+	public void ReduceDuration(float reductionTime) {
+		ExpirationTime = ExpirationTime - reductionTime;
+	}
+
+	private void Awake() {
+		remainingPercentage.Value = 0;
+	}
+
 	private void OnEnable() {
 		applicationTime = Time.time;
 		onApply.Invoke();
@@ -52,6 +62,8 @@ public class EtherealStatus : MonoBehaviour
 	}
 
 	private void Update() {
+		remainingPercentage.Value = Mathf.CeilToInt(ExpirationTime - Time.time);
+
 		if(Time.time > ExpirationTime) {
 			Debug.Log("Expiring");
 			Remove();
