@@ -17,6 +17,8 @@ namespace ReachBeyond.Music {
 		public AudioSource bodySource;
 		public TrackConstReference track;
 
+		private bool isPlaying = false;
+
 		private void Awake() {
 			Assert.IsNotNull(startSource);
 			Assert.IsNotNull(bodySource);
@@ -52,11 +54,21 @@ namespace ReachBeyond.Music {
 
 			startSource.Play();
 			bodySource.PlayDelayed(startClipLength);
+
+			isPlaying = true;
 		}
 
 		public void Stop() {
 			startSource.Stop();
 			bodySource.Stop();
+
+			isPlaying = false;
+		}
+
+		private void Update() {
+			if(isPlaying && !bodySource.isPlaying && !startSource.isPlaying) {
+				bodySource.Play();
+			}
 		}
 
 	}
